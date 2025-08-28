@@ -1,0 +1,15 @@
+# виртуальное окружение
+.venv/
+venv/
+
+# IDE
+.idea/
+
+# Python мусор
+__pycache__/
+*.pyc
+
+# секреты и БД
+.env
+*.sqlite3
+*.log

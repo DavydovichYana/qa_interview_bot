@@ -1,0 +1,82 @@
+# машинный_тег: "человеческое название (RU)"
+db: "Базы данных"
+sql: "SQL"
+indexes: "Индексы"
+constraints: "Ограничения (PRIMARY/FOREIGN KEY)"
+transactions: "Транзакции (ACID)"
+design: "Проектирование БД / Нормализация"
+
+api: "API-тестирование"
+http: "HTTP"
+status-codes: "Коды ответов HTTP"
+headers: "HTTP-заголовки"
+auth: "Аутентификация/Авторизация"
+json: "JSON"
+rest: "REST"
+pagination: "Пагинация"
+caching: "Кэширование"
+concurrency: "Конкурентные изменения"
+idempotency: "Идемпотентность"
+rate-limit: "Лимиты запросов"
+mocks: "Моки/Стабсы"
+tools: "Инструменты (Postman, curl)"
+operations: "Эксплуатация и здоровье сервисов"
+
+testing: "Общие принципы тестирования"
+test-design: "Тест-дизайн"
+functional: "Функциональное тестирование"
+non-functional: "Нефункциональное тестирование"
+performance: "Производительность/Нагрузка"
+ux: "Юзабилити"
+security: "Безопасность"
+web: "Веб-уязвимости"
+levels: "Уровни тестирования"
+smoke: "Smoke-тесты"
+regression: "Регрессия"
+acceptance: "Приёмочное тестирование"
+end-to-end: "Сквозные E2E"
+
+bug-reporting: "Баг-репорты"
+bug-lifecycle: "Жизненный цикл бага"
+test-artifacts: "Тестовые артефакты"
+
+logging: "Логирование"
+monitoring: "Мониторинг и наблюдаемость"
+metrics: "Метрики"
+sla: "SLA/SLO/SLI"
+
+release: "Релизы"
+environments: "Окружения"
+devops: "CI/CD и DevOps"
+requirements: "Требования/Трассируемость"
+ui: "UI и кросс-браузерность"
+
+graphql: "GraphQL"
+grpc: "gRPC"
+
+migrations: "Миграции БД"
+
+
+integration: "Интеграционное тестирование"
+white-box: "White-box тестирование"
+
+usability: "Юзабилити-тестирование"
+exploratory: "Исследовательское тестирование"
+
+automation: "Автоматизация тестирования"
+tdd: "TDD"
+ci-cd: "CI/CD процессы"
+
+strategy: "Стратегии выката (Canary, Blue-Green, Feature Toggle)"
+process: "Процессы тестирования и разработки"
+
+resilience: "Отказоустойчивость"
+compatibility: "Кросс-браузерное и кросс-платформенное тестирование"
+mobile: "Мобильное тестирование"
+
+
+architecture: "Архитектура ПО"
+serverless: "Serverless архитектуры"
+
+quality: "Качество и code review"
+theory: "Теория тестирования"

@@ -1,0 +1,2667 @@
+pack:
+  code: qa_advanced_ru_v1
+  title: QA Advanced (RU)
+  level: advanced
+  description: 'Вопросы для продвинутых QA: API, базы данных, автоматизация, DevOps,
+    микросервисы.'
+questions:
+- id: q1
+  text: Что означает идемпотентность HTTP-метода?
+  type: single
+  options:
+    a: Повторные запросы дают одинаковый результат без побочных эффектов
+    b: Метод работает только один раз
+    c: Метод всегда требует авторизации
+    d: Метод изменяет состояние сервера
+  answer: a
+  explanation: Идемпотентный метод (например, GET, PUT, DELETE) можно вызвать несколько
+    раз подряд без изменения результата.
+  tags:
+  - api
+  - idempotency
+- id: q2
+  text: Какой уровень изоляции транзакций предотвращает phantom read?
+  type: single
+  options:
+    a: Read Committed
+    b: Serializable
+    c: Repeatable Read
+    d: Read Uncommitted
+  answer: b
+  explanation: Serializable — самый строгий уровень, предотвращающий грязные чтения,
+    неповторяющиеся чтения и фантомы.
+  tags:
+  - db
+  - transactions
+- id: q3
+  text: Какой подход к тестированию микросервисов помогает минимизировать зависимость
+    от внешних сервисов?
+  type: single
+  options:
+    a: Интеграционное тестирование
+    b: End-to-End тестирование
+    c: Контрактное тестирование
+    d: Ручное тестирование
+  answer: c
+  explanation: Контрактное тестирование проверяет, что сервисы согласованы по API
+    и снижает необходимость E2E-тестов.
+  tags:
+  - microservices
+  - api
+- id: q4
+  text: Что показывает метрика 'p95 latency' в нагрузочном тестировании?
+  type: single
+  options:
+    a: Среднее время ответа
+    b: Максимальное время ответа
+    c: 5% пользователей не могут подключиться
+    d: 95% запросов выполняются быстрее этого значения
+  answer: d
+  explanation: p95 latency — показатель времени ответа, который не превышен у 95%
+    запросов. Важно для SLA.
+  tags:
+  - performance
+  - metrics
+- id: q5
+  text: Какая практика помогает обнаруживать дефекты на ранних стадиях разработки?
+  type: single
+  options:
+    a: Unit-тесты и CI
+    b: Только регрессионное тестирование
+    c: Тестирование на production
+    d: Только ручное тестирование
+  answer: a
+  explanation: Ранние unit-тесты и CI/CD пайплайн позволяют находить баги сразу после
+    коммита.
+  tags:
+  - automation
+  - ci-cd
+- id: q6
+  text: Что проверяет инструмент 'lint'?
+  type: single
+  options:
+    a: Производительность системы
+    b: Соответствие кода стилю и базовым правилам
+    c: Время выполнения SQL-запросов
+    d: Скорость сети
+  answer: b
+  explanation: Линтер проверяет стиль и типичные ошибки в коде, помогает улучшить
+    качество до запуска тестов.
+  tags:
+  - automation
+  - quality
+- id: q7
+  text: Какой HTTP-статус код указывает на 'Too Many Requests'?
+  type: single
+  options:
+    a: '409'
+    b: '500'
+    c: '429'
+    d: '401'
+  answer: c
+  explanation: HTTP 429 — 'Too Many Requests', когда превышен лимит запросов (rate
+    limit).
+  tags:
+  - api
+  - http
+- id: q8
+  text: Какой инструмент чаще всего используют для мониторинга логов и поиска ошибок?
+  type: single
+  options:
+    a: Grafana
+    b: Prometheus
+    c: Jenkins
+    d: Kibana
+  answer: d
+  explanation: Kibana используется для анализа логов в связке с Elasticsearch (ELK-стек).
+  tags:
+  - logging
+  - monitoring
+- id: q9
+  text: Какая база данных оптимальна для хранения сессий пользователей?
+  type: single
+  options:
+    a: Redis
+    b: PostgreSQL
+    c: MongoDB
+    d: Oracle
+  answer: a
+  explanation: Redis — in-memory хранилище, идеально подходит для сессий и кэша.
+  tags:
+  - db
+  - caching
+- id: q10
+  text: Какой тип тестов лучше всего подходит для проверки работы API под высокой
+    нагрузкой?
+  type: single
+  options:
+    a: Smoke-тесты
+    b: Нагрузочные тесты
+    c: Регрессионные тесты
+    d: Юзабилити тесты
+  answer: b
+  explanation: Нагрузочные (load) тесты моделируют высокий трафик и проверяют стабильность
+    API.
+  tags:
+  - performance
+  - api
+- id: q11
+  text: Какой инструмент чаще всего используют для имитации нагрузки на систему?
+  type: single
+  options:
+    a: Selenium
+    b: Postman
+    c: JMeter
+    d: Docker
+  answer: c
+  explanation: Apache JMeter — популярный инструмент для нагрузочного и стресс-тестирования.
+  tags:
+  - performance
+  - tools
+- id: q12
+  text: Что означает стратегия 'shift-left' в тестировании?
+  type: single
+  options:
+    a: Смещение тестирования на более поздние этапы
+    b: Фокус только на E2E тестах
+    c: Игнорирование unit-тестов
+    d: Раннее тестирование на этапе разработки
+  answer: d
+  explanation: Shift-left — это перенос акцента на тестирование ещё на этапе проектирования
+    и кодинга.
+  tags:
+  - strategy
+  - automation
+- id: q13
+  text: Какой вид индекса лучше всего ускоряет поиск по нескольким колонкам в БД?
+  type: single
+  options:
+    a: Составной (composite) индекс
+    b: B-Tree индекс
+    c: Hash индекс
+    d: GiST индекс
+  answer: a
+  explanation: Composite индекс создаётся по нескольким колонкам и ускоряет выборки
+    с фильтрацией по этим полям.
+  tags:
+  - db
+  - indexes
+- id: q14
+  text: Что делает система CI/CD?
+  type: single
+  options:
+    a: Только запускает юнит-тесты
+    b: Автоматизирует сборку, тестирование и доставку кода
+    c: Только управляет баг-трекером
+    d: Только разворачивает окружение
+  answer: b
+  explanation: 'CI/CD автоматизирует полный цикл: сборка, тесты, деплой.'
+  tags:
+  - ci-cd
+  - automation
+- id: q15
+  text: Что проверяют интеграционные тесты?
+  type: single
+  options:
+    a: Работу всей системы от начала до конца
+    b: Только UI
+    c: Взаимодействие модулей и сервисов
+    d: Один модуль изолированно
+  answer: c
+  explanation: Интеграционные тесты проверяют взаимодействие нескольких компонентов
+    системы.
+  tags:
+  - levels
+- id: q16
+  text: Какой метод HTTP не является идемпотентным?
+  type: single
+  options:
+    a: GET
+    b: DELETE
+    c: PUT
+    d: POST
+  answer: d
+  explanation: 'POST не идемпотентен: два одинаковых запроса могут создать две записи.'
+  tags:
+  - api
+  - http
+- id: q17
+  text: Какой инструмент чаще всего используют для оркестрации контейнеров?
+  type: single
+  options:
+    a: Kubernetes
+    b: Docker
+    c: Ansible
+    d: Terraform
+  answer: a
+  explanation: Kubernetes управляет контейнерами, балансирует нагрузку и автоматизирует
+    деплой.
+  tags:
+  - devops
+  - containers
+- id: q18
+  text: Что означает SLA 99.9%?
+  type: single
+  options:
+    a: Система может простаивать до ~8 часов в месяц
+    b: Система может простаивать до ~43 минут в месяц
+    c: Система всегда доступна
+    d: Система может простаивать 10% времени
+  answer: b
+  explanation: SLA 99.9% допускает около 43 минут простоя в месяц.
+  tags:
+  - sla
+  - metrics
+- id: q19
+  text: Что чаще всего используют для изоляции зависимостей в автоматизированных тестах?
+  type: single
+  options:
+    a: Docker
+    b: CI/CD пайплайн
+    c: Mock/Stub
+    d: GitHub Actions
+  answer: c
+  explanation: Mock/Stub позволяют изолировать систему от реальных зависимостей.
+  tags:
+  - automation
+  - mocks
+- id: q20
+  text: Что такое Canary release?
+  type: single
+  options:
+    a: Развёртывание новой версии для всех пользователей сразу
+    b: Релиз без тестирования
+    c: Полный откат версии
+    d: Развёртывание новой версии только для небольшой группы пользователей
+  answer: d
+  explanation: Canary release — выкатывание новой версии на малую часть аудитории
+    для проверки стабильности.
+  tags:
+  - release
+  - strategy
+- id: q21
+  text: Что проверяют smoke-тесты в CI/CD пайплайне?
+  type: single
+  options:
+    a: Основные функции системы после сборки
+    b: Нагрузку под высоким трафиком
+    c: Визуальные баги в интерфейсе
+    d: Скорость сети между сервисами
+  answer: a
+  explanation: Smoke-тесты выполняются сразу после сборки и проверяют ключевой функционал.
+  tags:
+  - ci-cd
+  - levels
+- id: q22
+  text: Какой инструмент чаще всего используют для управления инфраструктурой как
+    кодом (IaC)?
+  type: single
+  options:
+    a: Kubernetes
+    b: Terraform
+    c: Prometheus
+    d: Maven
+  answer: b
+  explanation: Terraform позволяет описывать инфраструктуру декларативно и управлять
+    ею как кодом.
+  tags:
+  - devops
+  - infrastructure
+- id: q23
+  text: Что означает 'rolling update'?
+  type: single
+  options:
+    a: Полная остановка системы и деплой
+    b: Резервное копирование данных
+    c: Обновление компонентов поэтапно без полной остановки
+    d: Откат версии
+  answer: c
+  explanation: Rolling update заменяет старые инстансы новыми поэтапно, без простоя.
+  tags:
+  - release
+  - strategy
+- id: q24
+  text: Какой тип индекса лучше всего подходит для полнотекстового поиска?
+  type: single
+  options:
+    a: B-Tree
+    b: Hash
+    c: Composite
+    d: GIN
+  answer: d
+  explanation: GIN-индекс оптимален для полнотекстового поиска (PostgreSQL).
+  tags:
+  - db
+  - indexes
+- id: q25
+  text: Какая практика позволяет автоматически откатывать релиз при обнаружении ошибок?
+  type: single
+  options:
+    a: Auto rollback
+    b: Feature toggles
+    c: Static analysis
+    d: Blue-green deployment
+  answer: a
+  explanation: Auto rollback откатывает версию автоматически, если в новой обнаружены
+    критические ошибки.
+  tags:
+  - release
+  - strategy
+- id: q26
+  text: Что означает понятие 'dead letter queue' в системах очередей сообщений?
+  type: single
+  options:
+    a: Очередь для отложенной доставки
+    b: Очередь для сообщений с ошибками обработки
+    c: Очередь для логирования
+    d: Очередь с высоким приоритетом
+  answer: b
+  explanation: Dead letter queue хранит сообщения, которые не удалось обработать корректно.
+  tags:
+  - queues
+  - architecture
+- id: q27
+  text: Какой формат чаще всего используется для описания API в OpenAPI Specification?
+  type: single
+  options:
+    a: INI
+    b: CSV
+    c: YAML/JSON
+    d: XML
+  answer: c
+  explanation: OpenAPI спецификации описываются в YAML или JSON.
+  tags:
+  - api
+  - documentation
+- id: q28
+  text: Что означает термин 'flaky test'?
+  type: single
+  options:
+    a: Тест, который не запускается
+    b: Тест, который стабильно падает
+    c: Тест, покрывающий слишком много кода
+    d: Тест, который иногда проходит, иногда падает
+  answer: d
+  explanation: Flaky test — нестабильный тест, результат которого зависит от внешних
+    факторов.
+  tags:
+  - automation
+  - quality
+- id: q29
+  text: Какой HTTP-метод чаще всего используют для частичного обновления ресурса?
+  type: single
+  options:
+    a: PATCH
+    b: PUT
+    c: POST
+    d: GET
+  answer: a
+  explanation: PATCH применяется для изменения части ресурса, в отличие от PUT.
+  tags:
+  - api
+  - http
+- id: q30
+  text: Что проверяет нагрузочное тестирование (load testing)?
+  type: single
+  options:
+    a: Скорость выполнения unit-тестов
+    b: Стабильность системы при ожидаемой нагрузке
+    c: Корректность UI
+    d: Работу системы при экстремальных условиях
+  answer: b
+  explanation: Load testing моделирует ожидаемое количество пользователей и проверяет
+    стабильность.
+  tags:
+  - performance
+  - levels
+- id: q31
+  text: Что означает 'circuit breaker' в микросервисной архитектуре?
+  type: single
+  options:
+    a: Метод кэширования данных
+    b: Система логирования
+    c: Паттерн для ограничения нагрузки при сбоях
+    d: Тестовый инструмент
+  answer: c
+  explanation: Circuit breaker предотвращает каскадные сбои, временно отключая проблемный
+    сервис.
+  tags:
+  - microservices
+  - architecture
+- id: q32
+  text: Какая роль у SLA (Service Level Agreement)?
+  type: single
+  options:
+    a: Определяет количество багов
+    b: Описывает архитектуру системы
+    c: Регламентирует процесс релиза
+    d: Фиксирует договорённости о доступности и качестве сервиса
+  answer: d
+  explanation: SLA фиксирует гарантии по доступности, времени отклика и качеству сервиса.
+  tags:
+  - sla
+  - contracts
+- id: q33
+  text: Какая техника тестирования используется для проверки граничных значений?
+  type: single
+  options:
+    a: Граничные значения
+    b: Эквивалентное разбиение
+    c: Cause-Effect графы
+    d: Сценарное тестирование
+  answer: a
+  explanation: Boundary Value Analysis помогает выявлять ошибки на границах допустимых
+    диапазонов.
+  tags:
+  - test-design
+- id: q34
+  text: Что делает Prometheus?
+  type: single
+  options:
+    a: Тестирование UI
+    b: Мониторинг метрик и алертов
+    c: Управление контейнерами
+    d: CI/CD пайплайн
+  answer: b
+  explanation: Prometheus собирает метрики и отправляет алерты при отклонениях.
+  tags:
+  - monitoring
+  - metrics
+- id: q35
+  text: Что означает blue-green deployment?
+  type: single
+  options:
+    a: Метод балансировки нагрузки
+    b: Использование только staging-сервера
+    c: Использование двух окружений для безопасных релизов
+    d: Деплой только ночью
+  answer: c
+  explanation: Blue-green deployment позволяет переключать трафик между двумя окружениями
+    для безопасных обновлений.
+  tags:
+  - release
+  - environments
+- id: q36
+  text: Какой SQL-запрос создаёт индекс?
+  type: single
+  options:
+    a: ALTER INDEX
+    b: INSERT INDEX
+    c: ADD INDEX
+    d: CREATE INDEX
+  answer: d
+  explanation: CREATE INDEX используется для создания индекса в БД.
+  tags:
+  - db
+  - sql
+- id: q37
+  text: Что означает стратегия 'shift-right'?
+  type: single
+  options:
+    a: Тестирование и мониторинг в production
+    b: Фокус на раннем тестировании
+    c: Только unit-тестирование
+    d: Отказ от автоматизации
+  answer: a
+  explanation: Shift-right — это тестирование и наблюдаемость в production.
+  tags:
+  - strategy
+  - monitoring
+- id: q38
+  text: Какая команда Docker запускает контейнер?
+  type: single
+  options:
+    a: docker build
+    b: docker run
+    c: docker compose
+    d: docker exec
+  answer: b
+  explanation: docker run создаёт и запускает контейнер.
+  tags:
+  - containers
+  - devops
+- id: q39
+  text: Что означает 'shadow traffic'?
+  type: single
+  options:
+    a: Атака на систему
+    b: Фильтрация сетевых пакетов
+    c: Тестовый трафик, отправляемый в систему параллельно реальному
+    d: Сжатие логов
+  answer: c
+  explanation: Shadow traffic — копия реального трафика, используемая для тестирования
+    без влияния на пользователей.
+  tags:
+  - testing
+  - strategy
+- id: q40
+  text: Что означает rollback?
+  type: single
+  options:
+    a: Удаление базы данных
+    b: Тестирование на staging
+    c: Автоматическое масштабирование
+    d: Откат системы на предыдущую стабильную версию
+  answer: d
+  explanation: Rollback — возвращение к предыдущей версии в случае ошибок.
+  tags:
+  - release
+- id: q41
+  text: Какой тип тестов лучше всего подходит для проверки интеграции с внешними API?
+  type: single
+  options:
+    a: Контрактные тесты
+    b: Нагрузочные тесты
+    c: Smoke-тесты
+    d: Unit-тесты
+  answer: a
+  explanation: Контрактные тесты проверяют совместимость API между сервисами.
+  tags:
+  - api
+  - microservices
+- id: q42
+  text: Что означает термин 'monkey testing'?
+  type: single
+  options:
+    a: Тестирование API скриптами
+    b: Непредсказуемые случайные действия пользователя
+    c: Стресс-тестирование базы данных
+    d: Тестирование только UI
+  answer: b
+  explanation: Monkey testing имитирует случайные действия, проверяя устойчивость
+    системы.
+  tags:
+  - test-design
+  - strategy
+- id: q43
+  text: Какой инструмент чаще всего используют для тестирования UI в браузере?
+  type: single
+  options:
+    a: JMeter
+    b: Postman
+    c: Selenium
+    d: Grafana
+  answer: c
+  explanation: Selenium — стандарт для UI-автотестов в браузере.
+  tags:
+  - ui
+  - automation
+- id: q44
+  text: Что означает принцип DRY в автоматизации тестов?
+  type: single
+  options:
+    a: Do Run Yourself — запускать тесты вручную
+    b: Deploy Rapidly Yourself — быстрый деплой
+    c: Debug Regularly Yourself — регулярная отладка
+    d: Don't Repeat Yourself — избегать дублирования кода
+  answer: d
+  explanation: DRY помогает поддерживать читаемый и переиспользуемый код автотестов.
+  tags:
+  - automation
+  - quality
+- id: q45
+  text: Какой HTTP-код указывает на 'Unauthorized'?
+  type: single
+  options:
+    a: '401'
+    b: '403'
+    c: '500'
+    d: '200'
+  answer: a
+  explanation: 401 Unauthorized означает, что требуется авторизация.
+  tags:
+  - api
+  - http
+- id: q46
+  text: Что проверяют chaos-тесты?
+  type: single
+  options:
+    a: Только UI под нагрузкой
+    b: Устойчивость системы к сбоям
+    c: Только базу данных
+    d: Скорость unit-тестов
+  answer: b
+  explanation: Chaos-тестирование моделирует сбои и проверяет устойчивость распределённых
+    систем.
+  tags:
+  - strategy
+  - microservices
+- id: q47
+  text: Какая команда Git используется для создания новой ветки?
+  type: single
+  options:
+    a: git merge
+    b: git push
+    c: git checkout -b
+    d: git reset
+  answer: c
+  explanation: git checkout -b branch_name создаёт и переключает на новую ветку.
+  tags:
+  - git
+  - tools
+- id: q48
+  text: Что означает понятие 'data masking'?
+  type: single
+  options:
+    a: Шифрование логов
+    b: Удаление тестовых данных
+    c: Сжатие данных в БД
+    d: Замена конфиденциальных данных фиктивными значениями
+  answer: d
+  explanation: Data masking — это сокрытие реальных данных для безопасности в тестовых
+    окружениях.
+  tags:
+  - security
+  - data
+- id: q49
+  text: Что означает Git flow?
+  type: single
+  options:
+    a: Модель ветвления и релизов в Git
+    b: Автоматическая сборка Docker
+    c: Метод тестирования API
+    d: Система CI/CD
+  answer: a
+  explanation: Git flow — это процесс организации веток для разработки, релизов и
+    багфиксов.
+  tags:
+  - git
+  - strategy
+- id: q50
+  text: Что означает 'feature toggle'?
+  type: single
+  options:
+    a: Фича, доступная только в staging
+    b: Механизм включения/выключения функционала без деплоя
+    c: Ручное тестирование новой фичи
+    d: Удаление фичи из кода
+  answer: b
+  explanation: Feature toggle позволяет включать и выключать функциональность конфигурацией.
+  tags:
+  - release
+  - strategy
+- id: q51
+  text: При тестировании микросервисов вы заметили, что часть запросов возвращает
+    504 Gateway Timeout. Что это может означать?
+  type: single
+  options:
+    a: Сервис не принимает соединения
+    b: Запрос успешно выполнен
+    c: Вышло время ожидания ответа от зависимого сервиса
+    d: Ошибка авторизации пользователя
+  answer: c
+  explanation: 504 Gateway Timeout означает, что сервис-прокси не дождался ответа
+    от бэкенда.
+  tags:
+  - api
+  - microservices
+- id: q52
+  text: Какой подход позволяет безопасно выкатывать изменения в продакшн с минимальным
+    риском?
+  type: single
+  options:
+    a: Full release
+    b: Регрессионное тестирование
+    c: Smoke-тестирование
+    d: Canary release
+  answer: d
+  explanation: Canary release — выкатывание новой версии на малую долю пользователей
+    для проверки стабильности.
+  tags:
+  - release
+  - strategy
+- id: q53
+  text: В чём отличие баг-репорта высокого приоритета от баг-репорта высокого severity?
+  type: single
+  options:
+    a: Priority определяет важность исправления, severity — влияние дефекта
+    b: Priority = влияние, severity = бизнес-ценность
+    c: Priority и severity — одно и то же
+    d: Priority используется только для UI-багов
+  answer: a
+  explanation: Severity — техническая серьёзность, Priority — бизнес-важность.
+  tags:
+  - bug-reporting
+  - process
+- id: q54
+  text: Что такое SQL injection и как его можно обнаружить на тестировании?
+  type: single
+  options:
+    a: Создание индекса в SQL
+    b: Вставка вредоносного SQL-запроса через пользовательский ввод; тестируется некорректными
+      строками
+    c: Оптимизация SQL-запросов
+    d: Ошибка при написании JOIN
+  answer: b
+  explanation: SQL injection — критическая уязвимость. Проверяется вводом строк типа
+    `' OR '1'='1`.
+  tags:
+  - security
+  - sql
+- id: q55
+  text: Вы тестируете REST API. Какой статус вернёт сервер при успешном создании ресурса?
+  type: single
+  options:
+    a: 200 OK
+    b: 204 No Content
+    c: 201 Created
+    d: 400 Bad Request
+  answer: c
+  explanation: При успешном POST сервер возвращает 201 Created.
+  tags:
+  - api
+  - http
+- id: q56
+  text: Что проверяет тестирование миграций базы данных?
+  type: single
+  options:
+    a: Что индексы созданы
+    b: Что API работает под нагрузкой
+    c: Что UI отображается корректно
+    d: Что миграции накатываются без ошибок и данные сохраняются
+  answer: d
+  explanation: Миграции должны выполняться без ошибок и сохранять данные.
+  tags:
+  - db
+  - migrations
+- id: q57
+  text: Какая техника тестирования помогает определить минимальное количество тестов
+    при максимальном покрытии?
+  type: single
+  options:
+    a: Эквивалентное разбиение
+    b: Тестирование по чек-листу
+    c: Регрессия
+    d: Граничные значения
+  answer: a
+  explanation: Equivalence partitioning разбивает данные на классы, снижая количество
+    тестов.
+  tags:
+  - test-design
+- id: q58
+  text: Что означает понятие 'test flakiness'?
+  type: single
+  options:
+    a: Тест всегда падает
+    b: Тест даёт разные результаты при одинаковых условиях
+    c: Тест выполняется слишком быстро
+    d: Тест покрывает только happy path
+  answer: b
+  explanation: Flaky-тесты — нестабильные, могут проходить или падать без изменений
+    кода.
+  tags:
+  - automation
+  - quality
+- id: q59
+  text: Какая стратегия деплоя позволяет держать два окружения (старое и новое) и
+    быстро переключать трафик?
+  type: single
+  options:
+    a: Rolling update
+    b: Shadow traffic
+    c: Blue-Green deployment
+    d: Canary release
+  answer: c
+  explanation: Blue-Green deployment использует два окружения, чтобы мгновенно переключать
+    трафик.
+  tags:
+  - release
+  - strategy
+- id: q60
+  text: Что означает термин 'test oracle'?
+  type: single
+  options:
+    a: Система, которая хранит баги
+    b: База тест-кейсов
+    c: Автоматический генератор тестов
+    d: Источник ожидаемых результатов для сравнения
+  answer: d
+  explanation: Test oracle — эталон, с которым сравнивают результаты теста.
+  tags:
+  - testing
+  - theory
+- id: q61
+  text: Что показывает метрика code coverage?
+  type: single
+  options:
+    a: Процент кода, покрытый тестами
+    b: Процент багов, найденных на проекте
+    c: Скорость выполнения тестов
+    d: Количество багов в коде
+  answer: a
+  explanation: Code coverage показывает, сколько строк или веток кода выполняется
+    при тестах.
+  tags:
+  - automation
+  - metrics
+- id: q62
+  text: При нагрузочном тестировании API вы заметили рост p95 latency. Что это значит?
+  type: single
+  options:
+    a: Все запросы выполняются за одинаковое время
+    b: 95% запросов выполняются быстрее этого времени
+    c: 95% запросов выполняются медленнее нормы
+    d: Система полностью упала
+  answer: b
+  explanation: p95 latency — время, которое не превышают 95% запросов.
+  tags:
+  - performance
+  - metrics
+- id: q63
+  text: Как QA может проверить корректность работы кэширования?
+  type: single
+  options:
+    a: Выключить сервер
+    b: Удалить все данные из БД
+    c: Запросить данные несколько раз и проверить заголовки/скорость
+    d: Сравнить время ответа с кэшем и без
+  answer: c
+  explanation: QA проверяет кэширование повторными запросами и заголовками (Cache-Control,
+    ETag).
+  tags:
+  - api
+  - caching
+- id: q64
+  text: Что проверяет тестирование требований?
+  type: single
+  options:
+    a: Только правильность диаграмм
+    b: Что все тесты прошли
+    c: Что баг-репорты заполнены
+    d: Полноту, непротиворечивость и тестопригодность требований
+  answer: d
+  explanation: Требования должны быть полными, понятными и тестопригодными.
+  tags:
+  - requirements
+- id: q65
+  text: Какой уровень логирования используют для отладки кода?
+  type: single
+  options:
+    a: DEBUG
+    b: INFO
+    c: WARN
+    d: ERROR
+  answer: a
+  explanation: DEBUG используется для вывода максимально подробной информации.
+  tags:
+  - logging
+- id: q66
+  text: Что означает термин 'race condition'?
+  type: single
+  options:
+    a: Ошибка при миграции БД
+    b: Состояние, когда несколько потоков одновременно обращаются к ресурсу и нарушают
+      корректность
+    c: Условие успешного деплоя
+    d: Тестирование скорости работы системы
+  answer: b
+  explanation: Race condition возникает при конкурентном доступе к ресурсу без синхронизации.
+  tags:
+  - concurrency
+  - bugs
+- id: q67
+  text: Что показывает метрика MTTR (Mean Time To Recovery)?
+  type: single
+  options:
+    a: Среднее время между сбоями
+    b: Среднее время сборки CI
+    c: Среднее время восстановления после сбоя
+    d: Среднее время выполнения тестов
+  answer: c
+  explanation: MTTR показывает, сколько в среднем занимает восстановление после инцидента.
+  tags:
+  - metrics
+  - monitoring
+- id: q68
+  text: При тестировании микросервисов вы заметили, что сервис А упал, но остальные
+    продолжают работать. О чем это говорит?
+  type: single
+  options:
+    a: Монолитная архитектура
+    b: Сильная связанность сервисов
+    c: Ошибка сетевого уровня
+    d: Слабая связанность сервисов
+  answer: d
+  explanation: Слабая связанность позволяет другим сервисам продолжать работу при
+    сбое одного.
+  tags:
+  - microservices
+  - architecture
+- id: q69
+  text: Что означает принцип 'fail fast'?
+  type: single
+  options:
+    a: Ошибки должны проявляться как можно раньше
+    b: Ошибки должны маскироваться
+    c: Ошибки должны игнорироваться
+    d: Ошибки фиксируются только на продакшн
+  answer: a
+  explanation: Fail fast — система быстро сообщает об ошибке, чтобы ускорить отладку.
+  tags:
+  - strategy
+  - quality
+- id: q70
+  text: Что означает 'dirty read' в транзакциях?
+  type: single
+  options:
+    a: Чтение данных из архивной таблицы
+    b: Чтение неподтверждённых данных из другой транзакции
+    c: Чтение только индексов
+    d: Чтение данных после rollback
+  answer: b
+  explanation: Dirty read — чтение данных, которые другая транзакция ещё не зафиксировала.
+  tags:
+  - db
+  - transactions
+- id: q71
+  text: Что такое load balancer и зачем он нужен?
+  type: single
+  options:
+    a: Сервис для логирования запросов
+    b: Метод шифрования данных
+    c: Компонент, распределяющий нагрузку между серверами
+    d: Система мониторинга
+  answer: c
+  explanation: Load balancer равномерно распределяет трафик между серверами, повышая
+    отказоустойчивость.
+  tags:
+  - architecture
+  - performance
+- id: q72
+  text: Какой инструмент чаще всего применяют для нагрузочного тестирования API?
+  type: single
+  options:
+    a: Selenium
+    b: Postman
+    c: Grafana
+    d: JMeter
+  answer: d
+  explanation: JMeter — популярный инструмент для нагрузочного и стресс-тестирования
+    API.
+  tags:
+  - performance
+  - api
+- id: q73
+  text: Что означает принцип Continuous Delivery?
+  type: single
+  options:
+    a: Готовность кода к деплою в любой момент
+    b: Ежедневный деплой в продакшн
+    c: Автоматическое тестирование UI
+    d: Только ручное тестирование перед релизом
+  answer: a
+  explanation: Continuous Delivery — это практика, при которой код всегда готов к
+    выпуску.
+  tags:
+  - ci-cd
+  - release
+- id: q74
+  text: Что означает HTTP-код 429 Too Many Requests?
+  type: single
+  options:
+    a: Некорректный запрос
+    b: Сервер перегружен и ограничил частоту запросов
+    c: Ошибка авторизации
+    d: Ресурс не найден
+  answer: b
+  explanation: 429 Too Many Requests сигнализирует о превышении лимита запросов.
+  tags:
+  - api
+  - http
+- id: q75
+  text: Какой тип тестов проверяет взаимодействие модулей между собой?
+  type: single
+  options:
+    a: Unit-тесты
+    b: Smoke-тесты
+    c: Интеграционные тесты
+    d: Нагрузочные тесты
+  answer: c
+  explanation: Интеграционные тесты проверяют корректность работы нескольких компонентов
+    в связке.
+  tags:
+  - levels
+  - integration
+- id: q76
+  text: Что означает стратегия 'shift-left'?
+  type: single
+  options:
+    a: Тестирование и мониторинг в продакшн
+    b: Тестирование только UI
+    c: Фокус на ручное тестирование
+    d: Перенос тестирования на ранние этапы разработки
+  answer: d
+  explanation: Shift-left — тестирование начинается как можно раньше, чтобы снизить
+    стоимость багов.
+  tags:
+  - strategy
+  - process
+- id: q77
+  text: Что означает HTTP-код 204 No Content?
+  type: single
+  options:
+    a: Запрос успешно выполнен, но тело ответа пустое
+    b: Ошибка клиента
+    c: Серверная ошибка
+    d: Неверный метод запроса
+  answer: a
+  explanation: 204 No Content — успешный ответ без данных.
+  tags:
+  - api
+  - http
+- id: q78
+  text: Какая система чаще всего используется для централизованного логирования?
+  type: single
+  options:
+    a: Kubernetes
+    b: ELK Stack (Elasticsearch, Logstash, Kibana)
+    c: Postman
+    d: MySQL
+  answer: b
+  explanation: ELK Stack — стандартный набор для сбора и анализа логов.
+  tags:
+  - logging
+  - monitoring
+- id: q79
+  text: Что означает тестирование по принципу 'happy path'?
+  type: single
+  options:
+    a: Проверка только негативных сценариев
+    b: Проверка работы системы под нагрузкой
+    c: Проверка сценариев с корректными данными и без ошибок
+    d: Проверка только edge-case сценариев
+  answer: c
+  explanation: Happy path — это сценарии, когда пользователь выполняет действия без
+    ошибок.
+  tags:
+  - test-design
+- id: q80
+  text: Какая техника помогает выявить дублирование кода в тестах?
+  type: single
+  options:
+    a: Регрессионное тестирование
+    b: Smoke-тестирование
+    c: Exploratory testing
+    d: Code review
+  answer: d
+  explanation: Code review помогает находить дублирование и улучшать читаемость кода
+    автотестов.
+  tags:
+  - automation
+  - quality
+- id: q81
+  text: Что означает уровень логирования WARN?
+  type: single
+  options:
+    a: Предупреждения о возможных проблемах
+    b: Фатальные ошибки
+    c: Информационные сообщения
+    d: Подробная отладка
+  answer: a
+  explanation: WARN сигнализирует о потенциальных проблемах, но система продолжает
+    работать.
+  tags:
+  - logging
+- id: q82
+  text: Что означает принцип 'idempotency' в API?
+  type: single
+  options:
+    a: Запрос всегда возвращает уникальный результат
+    b: Повторные одинаковые запросы дают один и тот же результат
+    c: Запрос выполняется только один раз
+    d: Запрос всегда требует авторизации
+  answer: b
+  explanation: Идемпотентность означает, что повторный запрос не изменяет состояние
+    системы.
+  tags:
+  - api
+  - theory
+- id: q83
+  text: Что означает термин soak testing?
+  type: single
+  options:
+    a: Ручное тестирование UI
+    b: Тестирование только при пиковых нагрузках
+    c: Длительное тестирование системы под стабильной нагрузкой
+    d: Тестирование доступности API
+  answer: c
+  explanation: Soak testing проверяет систему при долгой работе, выявляя утечки памяти
+    и деградацию.
+  tags:
+  - performance
+  - levels
+- id: q84
+  text: Какой инструмент чаще всего используют для мониторинга метрик в реальном времени?
+  type: single
+  options:
+    a: Postman
+    b: Docker
+    c: Kibana
+    d: Grafana
+  answer: d
+  explanation: Grafana визуализирует метрики и работает с Prometheus.
+  tags:
+  - monitoring
+- id: q85
+  text: Что означает термин 'cold start' в serverless архитектуре?
+  type: single
+  options:
+    a: Медленный запуск функции при первом обращении
+    b: Ошибка при инициализации базы данных
+    c: Падение сервиса после деплоя
+    d: Фатальная ошибка API
+  answer: a
+  explanation: Cold start — это задержка при первом запуске функции в безсерверной
+    архитектуре.
+  tags:
+  - serverless
+  - architecture
+- id: q86
+  text: Что означает принцип DRY в тестовой автоматизации?
+  type: single
+  options:
+    a: Do Run Yourself — запускать тесты вручную
+    b: Don't Repeat Yourself — избегать дублирования кода
+    c: Debug Regularly Yourself — регулярная отладка
+    d: Deploy Rapidly Yourself — быстрый деплой
+  answer: b
+  explanation: DRY помогает писать чистые и переиспользуемые автотесты.
+  tags:
+  - automation
+  - quality
+- id: q87
+  text: Какой инструмент чаще всего применяют для нагрузочного тестирования веб-сервисов?
+  type: single
+  options:
+    a: Postman
+    b: Docker
+    c: k6
+    d: Selenium
+  answer: c
+  explanation: k6 — современный инструмент для нагрузочного тестирования API и сервисов.
+  tags:
+  - performance
+  - api
+- id: q88
+  text: Что означает принцип SOLID для тестовой автоматизации?
+  type: single
+  options:
+    a: Набор принципов для построения CI/CD пайплайна
+    b: Методика регрессионного тестирования
+    c: Модель ветвления Git
+    d: Принципы проектирования гибких и поддерживаемых систем
+  answer: d
+  explanation: SOLID — пять принципов проектирования, применимых и к автотестам.
+  tags:
+  - automation
+  - design
+- id: q89
+  text: Что означает термин shadow testing?
+  type: single
+  options:
+    a: Параллельная проверка новой версии на реальном трафике
+    b: Использование UI-скриптов
+    c: Запуск тестов в фоновом режиме
+    d: Тестирование только ночью
+  answer: a
+  explanation: Shadow testing — новый сервис получает копию реального трафика, без
+    влияния на пользователей.
+  tags:
+  - strategy
+  - testing
+- id: q90
+  text: Что означает принцип KISS в разработке автотестов?
+  type: single
+  options:
+    a: Keep It Secure, Stable — безопасность и стабильность
+    b: Keep It Simple, Stupid — делать тесты простыми и понятными
+    c: Keep It Synchronized — синхронизировать тесты
+    d: Keep It Short — короткие тесты
+  answer: b
+  explanation: 'KISS напоминает: простые тесты проще поддерживать.'
+  tags:
+  - automation
+  - quality
+- id: q91
+  text: Какой инструмент чаще всего используют для контрактного тестирования микросервисов?
+  type: single
+  options:
+    a: Grafana
+    b: JMeter
+    c: Pact
+    d: Selenium
+  answer: c
+  explanation: Pact используется для контрактного тестирования взаимодействия сервисов.
+  tags:
+  - api
+  - microservices
+- id: q92
+  text: Что означает термин spike testing?
+  type: single
+  options:
+    a: Долгосрочная нагрузка
+    b: Тестирование UI без сценариев
+    c: Фоновое тестирование логов
+    d: Резкий рост нагрузки и наблюдение за поведением системы
+  answer: d
+  explanation: Spike testing проверяет систему при резком росте трафика.
+  tags:
+  - performance
+  - levels
+- id: q93
+  text: Что означает HTTP-код 202 Accepted?
+  type: single
+  options:
+    a: Запрос принят и поставлен в очередь на обработку
+    b: Запрос принят и уже обработан
+    c: Ошибка авторизации
+    d: Неверный запрос
+  answer: a
+  explanation: 202 Accepted — сервер принял запрос, но его выполнение ещё не завершено.
+  tags:
+  - api
+  - http
+- id: q94
+  text: Что означает принцип YAGNI?
+  type: single
+  options:
+    a: You Always Generate New Ideas
+    b: You Aren’t Gonna Need It — не реализуй то, что не нужно прямо сейчас
+    c: Your API Goes Next Immediately
+    d: Your Architecture Gets New Iterations
+  answer: b
+  explanation: YAGNI помогает избегать избыточной сложности в коде и тестах.
+  tags:
+  - automation
+  - design
+- id: q95
+  text: Что проверяет тестирование безопасности (security testing)?
+  type: single
+  options:
+    a: Только нагрузку на сервер
+    b: Качество UI
+    c: Устойчивость системы к атакам и защита данных
+    d: Совместимость API
+  answer: c
+  explanation: Security testing проверяет авторизацию, SQL-инъекции, XSS и защиту
+    данных.
+  tags:
+  - security
+- id: q96
+  text: Что означает термин rollback testing?
+  type: single
+  options:
+    a: Тестирование миграций данных
+    b: Тестирование только UI
+    c: Тестирование API без авторизации
+    d: Проверка возможности отката системы на предыдущую версию
+  answer: d
+  explanation: Rollback testing проверяет корректность возврата системы на предыдущую
+    версию.
+  tags:
+  - release
+  - strategy
+- id: q97
+  text: Что означает термин mutation testing?
+  type: single
+  options:
+    a: Изменение кода для проверки эффективности тестов
+    b: Запуск тестов на разных окружениях
+    c: Проверка нагрузки под стрессом
+    d: Тестирование UI случайными действиями
+  answer: a
+  explanation: Mutation testing проверяет, могут ли тесты поймать внесённые изменения
+    в код.
+  tags:
+  - automation
+  - quality
+- id: q98
+  text: Что означает термин stress testing?
+  type: single
+  options:
+    a: Длительное тестирование системы
+    b: Тестирование системы за пределами её проектных нагрузок
+    c: Тестирование API без логов
+    d: Проверка безопасности системы
+  answer: b
+  explanation: Stress testing выявляет пределы производительности системы.
+  tags:
+  - performance
+  - levels
+- id: q99
+  text: Что означает термин exploratory testing?
+  type: single
+  options:
+    a: Тестирование только по чек-листам
+    b: Тестирование только API
+    c: Тестирование без заранее подготовленных сценариев
+    d: Автоматизированное тестирование
+  answer: c
+  explanation: Exploratory testing — исследовательское тестирование, основанное на
+    опыте тестировщика.
+  tags:
+  - strategy
+  - manual
+- id: q100
+  text: Что означает стратегия A/B testing?
+  type: single
+  options:
+    a: Регрессионное тестирование API
+    b: Тестирование миграций базы данных
+    c: Тестирование под высокой нагрузкой
+    d: Сравнение двух версий продукта на разных группах пользователей
+  answer: d
+  explanation: A/B testing — сравнение двух версий продукта для проверки гипотез.
+  tags:
+  - strategy
+  - product
+- id: q101
+  text: Что означает термин 'contract-first API development'?
+  type: single
+  options:
+    a: Сначала описывается контракт API, затем код и тесты
+    b: Контракты проверяются только после релиза
+    c: Контракты автоматически генерируются из логов
+    d: Сначала пишется код, потом контракт
+  answer: a
+  explanation: Contract-first — подход, когда контракт API задаётся до реализации,
+    что упрощает тестирование и интеграцию.
+  tags:
+  - api
+  - design
+- id: q102
+  text: Что означает термин 'property-based testing'?
+  type: single
+  options:
+    a: Тестирование атрибутов базы данных
+    b: Тестирование на основе проверяемых свойств вместо конкретных входных данных
+    c: Тестирование метаданных объектов
+    d: Тестирование только UI свойств
+  answer: b
+  explanation: Property-based testing проверяет общие свойства системы на множестве
+    автоматически сгенерированных входов.
+  tags:
+  - automation
+  - strategy
+- id: q103
+  text: В чём особенность 'fuzz testing'?
+  type: single
+  options:
+    a: Тестирование по заранее подготовленным сценариям
+    b: Тестирование доступности API
+    c: Генерация случайных или некорректных данных для выявления уязвимостей
+    d: Проверка только UI
+  answer: c
+  explanation: Fuzz testing подаёт в систему случайные/ошибочные данные для поиска
+    уязвимостей и ошибок.
+  tags:
+  - security
+  - automation
+- id: q104
+  text: Что означает термин 'contract-driven testing'?
+  type: single
+  options:
+    a: Проверка, что система соответствует SLA
+    b: Тестирование по юридическим требованиям
+    c: Проверка UI по контракту заказчика
+    d: Построение тестов на основе API-контрактов
+  answer: d
+  explanation: В contract-driven testing автотесты генерируются или проектируются
+    на основе API-контракта (например, OpenAPI).
+  tags:
+  - api
+  - automation
+- id: q105
+  text: Что означает термин 'stateful vs stateless testing'?
+  type: single
+  options:
+    a: Stateful тесты зависят от предыдущих шагов, stateless — независимы
+    b: Stateful тесты длиннее по времени выполнения
+    c: Разницы между ними нет
+    d: Stateful тесты проверяют UI, stateless — API
+  answer: a
+  explanation: Stateful-тесты используют состояние из предыдущих шагов, stateless
+    — выполняются независимо.
+  tags:
+  - api
+  - design
+- id: q106
+  text: Что означает термин 'synthetic monitoring'?
+  type: single
+  options:
+    a: Мониторинг реальных пользователей
+    b: Эмуляция пользовательских сценариев для мониторинга доступности
+    c: Мониторинг базы данных
+    d: Мониторинг только логов
+  answer: b
+  explanation: Synthetic monitoring моделирует действия пользователей, проверяя доступность
+    и производительность системы.
+  tags:
+  - monitoring
+  - strategy
+- id: q107
+  text: Что означает термин 'observability' в QA и DevOps?
+  type: single
+  options:
+    a: Только мониторинг UI
+    b: Автоматизация unit-тестов
+    c: Набор практик для понимания внутреннего состояния системы через метрики, логи
+      и трассировки
+    d: Только логирование
+  answer: c
+  explanation: Observability — это способность системы давать информацию о своём внутреннем
+    состоянии через метрики, логи и трассировки.
+  tags:
+  - monitoring
+  - devops
+- id: q108
+  text: Что означает термин 'backpressure' в системах обработки сообщений?
+  type: single
+  options:
+    a: Механизм балансировки нагрузки между сервисами
+    b: Метод тестирования конкурентного доступа
+    c: Полное завершение обработки сообщений
+    d: Перегрузка очереди сообщений из-за слишком высокой скорости продюсера
+  answer: d
+  explanation: Backpressure возникает, когда потребитель не успевает обрабатывать
+    сообщения, и очередь переполняется.
+  tags:
+  - queues
+  - architecture
+- id: q109
+  text: Что означает термин 'chaos monkey'?
+  type: single
+  options:
+    a: Инструмент для эмуляции случайных сбоев в инфраструктуре
+    b: Метод тестирования UI случайными кликами
+    c: Процесс миграции данных с ошибками
+    d: Нестабильный юнит-тест
+  answer: a
+  explanation: Chaos Monkey (Netflix) намеренно отключает узлы, проверяя отказоустойчивость
+    системы.
+  tags:
+  - chaos
+  - microservices
+- id: q110
+  text: Что означает 'idempotent consumer' в очередях сообщений?
+  type: single
+  options:
+    a: Потребитель, который всегда сохраняет состояние
+    b: Потребитель, который может обрабатывать одно сообщение несколько раз без изменения
+      результата
+    c: Потребитель, который отбрасывает все дубликаты
+    d: Потребитель, который работает только в режиме readonly
+  answer: b
+  explanation: Идемпотентный consumer может безопасно обрабатывать одно и то же сообщение
+    несколько раз.
+  tags:
+  - queues
+  - reliability
+- id: q111
+  text: Что означает 'smoke test' в hardware-тестировании?
+  type: single
+  options:
+    a: Тестирование безопасности устройств
+    b: Дымовые сенсоры для тестирования серверной
+    c: Минимальный набор проверок, что устройство включается и работает
+    d: Долгосрочная проверка оборудования
+  answer: c
+  explanation: Smoke test в железе — включение устройства, чтобы проверить, что оно
+    не 'горит' и запускается.
+  tags:
+  - hardware
+  - levels
+- id: q112
+  text: Что означает термин 'dark launch'?
+  type: single
+  options:
+    a: Деплой ночью
+    b: Отключение логирования в тестах
+    c: Полный откат релиза
+    d: Выкатка фичи без уведомления пользователей
+  answer: d
+  explanation: Dark launch — новая функциональность работает в продакшне, но скрыта
+    от пользователей.
+  tags:
+  - release
+  - strategy
+- id: q113
+  text: Что означает 'contract violation' при контрактном тестировании?
+  type: single
+  options:
+    a: Несоответствие API-контракта между потребителем и провайдером
+    b: Сбой базы данных при миграции
+    c: Ошибка деплоя из-за несовместимости версий
+    d: Нарушение лицензии на библиотеку
+  answer: a
+  explanation: Contract violation возникает, когда API не соответствует заранее согласованному
+    контракту.
+  tags:
+  - api
+  - contracts
+- id: q114
+  text: Что означает термин 'sandbox environment'?
+  type: single
+  options:
+    a: Среда для стресс-тестов
+    b: Изолированное окружение для тестов
+    c: UI-режим для автотестов
+    d: Логирование действий пользователя
+  answer: b
+  explanation: Sandbox — это изолированная среда для безопасного тестирования и экспериментов.
+  tags:
+  - environments
+  - testing
+- id: q115
+  text: Что означает термин 'shift-up testing'?
+  type: single
+  options:
+    a: Тестирование API поверх UI
+    b: Тестирование только после релиза
+    c: Фокус QA на бизнес-тестировании и пользовательском опыте
+    d: Смещение тестов в сторону юнит-тестов
+  answer: c
+  explanation: Shift-up testing предполагает, что QA тестирует ценность и UX, а не
+    только техническую реализацию.
+  tags:
+  - strategy
+  - process
+- id: q116
+  text: Зачем применяют 'soak testing' для баз данных?
+  type: single
+  options:
+    a: Для тестирования миграций и индексов
+    b: Для выявления логических ошибок в SQL-запросах
+    c: Для проверки корректности rollback
+    d: Для проверки работы под долговременной стабильной нагрузкой
+  answer: d
+  explanation: Soak testing выявляет утечки памяти, деградацию и проблемы долгоживущих
+    соединений.
+  tags:
+  - db
+  - performance
+- id: q117
+  text: Чем отличается load testing от stress testing?
+  type: single
+  options:
+    a: Load проверяет систему при ожидаемой нагрузке, Stress — при экстремальной нагрузке
+    b: Load — всегда на продакшне, stress — на тестовом окружении
+    c: Load — проверка UI, stress — API
+    d: Различий нет, это одно и то же
+  answer: a
+  explanation: Load моделирует реальную нагрузку, stress проверяет работу в экстремальных
+    условиях.
+  tags:
+  - performance
+  - levels
+- id: q118
+  text: Какую задачу решает паттерн 'circuit breaker'?
+  type: single
+  options:
+    a: Перенаправляет трафик при обновлении версии
+    b: Предотвращает каскадные сбои, отключая проблемный сервис
+    c: Ускоряет SQL-запросы с помощью индексов
+    d: Сжимает логи для хранения
+  answer: b
+  explanation: Circuit breaker ограничивает количество запросов к упавшему сервису,
+    чтобы вся система не рухнула.
+  tags:
+  - microservices
+  - architecture
+- id: q119
+  text: В каких случаях используют тестовые двойники (mocks, stubs)?
+  type: single
+  options:
+    a: Когда выполняется нагрузочное тестирование
+    b: Когда проверяют реальное взаимодействие сервисов
+    c: Когда нужно изолировать систему от внешних зависимостей
+    d: Когда тестируют только UI
+  answer: c
+  explanation: Mocks и stubs подменяют внешние зависимости, чтобы тестировать компонент
+    в изоляции.
+  tags:
+  - automation
+  - mocks
+- id: q120
+  text: Как проверить, что в распределённой системе корректно настроен retry-механизм?
+  type: single
+  options:
+    a: Запустить нагрузочный тест и проверить latency
+    b: Сравнить логи CI/CD пайплайна
+    c: Посмотреть покрытие кода
+    d: Вызвать ошибку у зависимого сервиса и отследить количество повторных попыток
+  answer: d
+  explanation: QA может симулировать сбой и убедиться, что система повторяет запросы
+    в рамках настроек retry.
+  tags:
+  - reliability
+  - microservices
+- id: q121
+  text: Чем опасны 'flaky tests' в автоматизации?
+  type: single
+  options:
+    a: Могут давать разные результаты при одинаковых условиях
+    b: Запускаются слишком быстро
+    c: Проверяют только негативные сценарии
+    d: Не покрывают бизнес-логику
+  answer: a
+  explanation: Flaky-тесты подрывают доверие к автотестам, так как падают без реальных
+    причин.
+  tags:
+  - automation
+  - quality
+- id: q122
+  text: Какую проблему помогает выявить 'fuzz testing'?
+  type: single
+  options:
+    a: Отсутствие логирования
+    b: Уязвимости и ошибки при обработке некорректных или случайных входных данных
+    c: Избыточное использование кэша
+    d: Неправильное распределение нагрузки
+  answer: b
+  explanation: Fuzz testing генерирует случайные данные и помогает находить уязвимости
+    и краши.
+  tags:
+  - security
+  - automation
+- id: q123
+  text: Какой инструмент чаще всего применяют для проверки контрактов API?
+  type: single
+  options:
+    a: Grafana
+    b: Postman
+    c: Pact
+    d: Selenium
+  answer: c
+  explanation: Pact позволяет проверять взаимодействие между сервисами на уровне API-контрактов.
+  tags:
+  - api
+  - tools
+- id: q124
+  text: Какую цель преследует 'mutation testing'?
+  type: single
+  options:
+    a: Протестировать базу данных при миграциях
+    b: Оптимизировать SQL-запросы
+    c: Проверить UI под нагрузкой
+    d: Проверить, что тесты ловят внесённые изменения в код
+  answer: d
+  explanation: Mutation testing вносит изменения в код и проверяет, найдут ли их тесты.
+  tags:
+  - automation
+  - quality
+- id: q125
+  text: Почему для session storage часто выбирают Redis?
+  type: single
+  options:
+    a: Он хранит данные в памяти и обеспечивает быстрый доступ
+    b: Он работает только с JSON
+    c: Он поддерживает только SQL
+    d: Он автоматически выполняет миграции
+  answer: a
+  explanation: Redis — in-memory база, идеально подходящая для хранения сессий и кэша.
+  tags:
+  - db
+  - performance
+- id: q126
+  text: Чем отличается мониторинг от observability?
+  type: single
+  options:
+    a: Мониторинг применяется только в продакшн, observability — в тесте
+    b: Мониторинг показывает известные метрики, observability помогает понять причину
+      проблемы
+    c: Мониторинг относится к UI, observability — к API
+    d: Различий нет, это одно и то же
+  answer: b
+  explanation: Мониторинг фиксирует отклонения, observability позволяет понять внутреннее
+    состояние системы.
+  tags:
+  - monitoring
+  - devops
+- id: q127
+  text: Как QA может проверить корректность работы кэширования API?
+  type: single
+  options:
+    a: Запустить стресс-тестирование
+    b: Сравнить покрытие автотестов
+    c: Сделать повторные запросы и проверить заголовки/скорость ответов
+    d: Отключить все логи
+  answer: c
+  explanation: При правильном кэшировании повторные запросы должны быть быстрее и
+    содержать заголовки Cache-Control, ETag.
+  tags:
+  - api
+  - caching
+- id: q128
+  text: Зачем используют feature toggles?
+  type: single
+  options:
+    a: Чтобы деплоить только ночью
+    b: Чтобы фиксировать баги в логах
+    c: Чтобы проверять индексы в БД
+    d: Чтобы включать и выключать функционал без релиза
+  answer: d
+  explanation: Фичи-флаги позволяют гибко управлять доступностью функционала в рантайме.
+  tags:
+  - release
+  - strategy
+- id: q129
+  text: Чем отличается blue-green deployment от canary release?
+  type: single
+  options:
+    a: Blue-green использует два окружения, canary — выкатывает версию на часть пользователей
+    b: Blue-green всегда выполняется ночью, canary — днём
+    c: Blue-green — это стресс-тестирование, canary — smoke-тестирование
+    d: Различий нет
+  answer: a
+  explanation: Blue-green переключает трафик между двумя окружениями, canary постепенно
+    включает новую версию.
+  tags:
+  - release
+  - deployment
+- id: q130
+  text: Какую проблему решает data masking?
+  type: single
+  options:
+    a: Оптимизирует SQL-запросы
+    b: Защищает персональные данные в тестовых окружениях
+    c: Ускоряет автотесты
+    d: Уменьшает нагрузку на сеть
+  answer: b
+  explanation: Data masking заменяет реальные конфиденциальные данные фиктивными.
+  tags:
+  - security
+  - data
+- id: q131
+  text: В каких случаях применяют shadow traffic?
+  type: single
+  options:
+    a: Когда тестируется только UI
+    b: Когда база данных недоступна
+    c: Когда нужно протестировать новый сервис на копии реального трафика
+    d: Когда включен режим отладки
+  answer: c
+  explanation: Shadow traffic отправляет копию реального трафика на новый сервис без
+    влияния на пользователей.
+  tags:
+  - testing
+  - strategy
+- id: q132
+  text: Чем отличаются smoke-тесты от regression-тестов?
+  type: single
+  options:
+    a: Smoke запускается только вручную, regression — автоматически
+    b: Smoke всегда быстрее, regression всегда медленнее
+    c: Различий нет
+    d: Smoke проверяет базовую работоспособность, regression — весь функционал после
+      изменений
+  answer: d
+  explanation: Smoke — базовые проверки 'жив ли билд', regression — полная проверка
+    на баги после изменений.
+  tags:
+  - levels
+  - strategy
+- id: q133
+  text: Зачем в тестировании применяют sandbox-окружения?
+  type: single
+  options:
+    a: Чтобы изолировать тесты и не повредить продакшн
+    b: Чтобы ускорить SQL-запросы
+    c: Чтобы логировать только ошибки
+    d: Чтобы уменьшить нагрузку на CI/CD
+  answer: a
+  explanation: Sandbox позволяет безопасно экспериментировать, не влияя на продакшн.
+  tags:
+  - environments
+  - testing
+- id: q134
+  text: Чем отличается synthetic monitoring от real user monitoring (RUM)?
+  type: single
+  options:
+    a: Synthetic используется для UI, RUM — для API
+    b: Synthetic эмулирует сценарии, RUM собирает данные реальных пользователей
+    c: Synthetic работает только ночью, RUM — днём
+    d: Различий нет
+  answer: b
+  explanation: Synthetic monitoring моделирует действия, RUM показывает реальное использование.
+  tags:
+  - monitoring
+  - strategy
+- id: q135
+  text: Как проверить работу механизма circuit breaker?
+  type: single
+  options:
+    a: Запустить fuzz-тестирование
+    b: Сравнить скорость unit-тестов
+    c: Симулировать сбой сервиса и убедиться, что вызовы ограничены
+    d: Выполнить миграции базы
+  answer: c
+  explanation: QA может отключить зависимость и убедиться, что circuit breaker блокирует
+    запросы.
+  tags:
+  - microservices
+  - reliability
+- id: q136
+  text: В чём особенность end-to-end тестов по сравнению с integration-тестами?
+  type: single
+  options:
+    a: E2E быстрее, чем integration
+    b: E2E тестируют только API, integration — UI
+    c: Различий нет
+    d: E2E проверяют полный пользовательский сценарий, integration — взаимодействие
+      компонентов
+  answer: d
+  explanation: E2E эмулирует путь пользователя через систему, integration проверяет
+    только связки компонентов.
+  tags:
+  - levels
+  - automation
+- id: q137
+  text: Зачем использовать contract-first подход при проектировании API?
+  type: single
+  options:
+    a: Чтобы команды разработки и тестирования работали по единому контракту
+    b: Чтобы ускорить выполнение SQL-запросов
+    c: Чтобы логировать только успешные ответы
+    d: Чтобы уменьшить количество автотестов
+  answer: a
+  explanation: Contract-first API позволяет проектировать тесты и код вокруг заранее
+    согласованного интерфейса.
+  tags:
+  - api
+  - design
+- id: q138
+  text: Какую проблему помогают решать retries в распределённых системах?
+  type: single
+  options:
+    a: Уменьшать нагрузку на кэш
+    b: Компенсировать временные сетевые сбои
+    c: Оптимизировать SQL-запросы
+    d: Сокращать время запуска автотестов
+  answer: b
+  explanation: Повторные попытки позволяют системе быть более устойчивой к временным
+    сбоям.
+  tags:
+  - reliability
+  - microservices
+- id: q139
+  text: Почему в тестировании используют property-based подход?
+  type: single
+  options:
+    a: Чтобы ускорить smoke-тесты
+    b: Чтобы уменьшить количество логов
+    c: Чтобы находить ошибки на автоматически сгенерированных наборах данных
+    d: Чтобы проверить только UI
+  answer: c
+  explanation: Property-based testing позволяет тестировать не конкретные значения,
+    а свойства системы.
+  tags:
+  - automation
+  - strategy
+- id: q140
+  text: Какой риск появляется при использовании 'dark launch'?
+  type: single
+  options:
+    a: Все пользователи сразу увидят новую функциональность
+    b: Невозможно протестировать фичу на тестовом окружении
+    c: Система становится уязвимой к SQL-инъекциям
+    d: Фича может работать некорректно в продакшне, оставаясь незаметной для пользователей
+  answer: d
+  explanation: Dark launch скрывает функционал, поэтому ошибки могут проявляться незаметно
+    в продакшне.
+  tags:
+  - release
+  - strategy
+- id: q141
+  text: Чем отличаются hotfix и patch?
+  type: single
+  options:
+    a: Hotfix выпускается срочно в продакшн, patch — плановое обновление
+    b: Patch всегда больше по размеру, чем hotfix
+    c: Hotfix применяется только к UI, patch — к API
+    d: Различий нет
+  answer: a
+  explanation: Hotfix — экстренное исправление в продакшне, patch — регулярное обновление
+    или набор багфиксов.
+  tags:
+  - release
+  - strategy
+- id: q142
+  text: Как QA может убедиться, что система устойчива к race conditions?
+  type: single
+  options:
+    a: Выполнить smoke-тесты
+    b: Симулировать параллельный доступ к одному ресурсу
+    c: Посмотреть нагрузку на CI/CD
+    d: Сравнить результаты unit-тестов
+  answer: b
+  explanation: Race conditions проявляются при конкурентном доступе без синхронизации.
+  tags:
+  - concurrency
+  - bugs
+- id: q143
+  text: Зачем использовать canary release?
+  type: single
+  options:
+    a: Чтобы зашифровать данные
+    b: Чтобы уменьшить количество автотестов
+    c: Чтобы выкатить версию только для небольшой части пользователей
+    d: Чтобы протестировать миграции базы
+  answer: c
+  explanation: Canary release позволяет проверять новую версию на небольшой группе
+    пользователей.
+  tags:
+  - release
+  - deployment
+- id: q144
+  text: Чем отличается rollback от rollforward?
+  type: single
+  options:
+    a: Rollback применяется только к UI, rollforward — к API
+    b: Rollback всегда быстрее
+    c: Различий нет
+    d: Rollback возвращает систему на старую версию, rollforward накатывает фикс поверх
+      новой
+  answer: d
+  explanation: Rollback отменяет изменения, rollforward добавляет новые фиксирующие
+    изменения.
+  tags:
+  - release
+  - strategy
+- id: q145
+  text: Какую роль выполняет observability для QA?
+  type: single
+  options:
+    a: Помогает анализировать причины ошибок через логи, метрики и трассировки
+    b: Автоматически генерирует баг-репорты
+    c: Сжимает данные в базе
+    d: Сокращает количество тест-кейсов
+  answer: a
+  explanation: Observability помогает понять, что происходит внутри системы на основе
+    сигналов.
+  tags:
+  - monitoring
+  - qa
+- id: q146
+  text: Какой риск возникает при использовании retry без ограничений?
+  type: single
+  options:
+    a: SQL-запросы перестают быть идемпотентными
+    b: Можно перегрузить систему лавиной повторных запросов
+    c: Кэш перестает обновляться
+    d: Система становится медленнее при миграциях
+  answer: b
+  explanation: Неограниченный retry может вызвать 'шторма' повторных запросов.
+  tags:
+  - reliability
+  - microservices
+- id: q147
+  text: В чём преимущество использования docker-compose для тестов?
+  type: single
+  options:
+    a: Тесты всегда выполняются быстрее
+    b: Docker-compose оптимизирует SQL-запросы
+    c: Можно поднимать целые стенды с зависимостями одной командой
+    d: Нет необходимости в логировании
+  answer: c
+  explanation: Docker-compose позволяет запускать сервисы в изолированных контейнерах
+    для тестов.
+  tags:
+  - containers
+  - automation
+- id: q148
+  text: Почему важна идемпотентность HTTP-методов в тестировании API?
+  type: single
+  options:
+    a: Чтобы тесты выполнялись быстрее
+    b: Чтобы исключить логирование ошибок
+    c: Чтобы уменьшить время отката версии
+    d: Чтобы повторные запросы не изменяли состояние системы
+  answer: d
+  explanation: Идемпотентность упрощает тестирование и снижает риск побочных эффектов.
+  tags:
+  - api
+  - http
+- id: q149
+  text: Чем отличается regression testing от retesting?
+  type: single
+  options:
+    a: Regression проверяет систему после изменений, retesting — фикс конкретного
+      бага
+    b: Regression всегда выполняется вручную, retesting — автоматически
+    c: Regression — только UI, retesting — только API
+    d: Различий нет
+  answer: a
+  explanation: Regression — это широкий набор проверок, retesting — повторная проверка
+    бага.
+  tags:
+  - levels
+  - strategy
+- id: q150
+  text: Как проверить корректность rate limiting в API?
+  type: single
+  options:
+    a: Сравнить метрики CI/CD пайплайна
+    b: Отправить больше запросов, чем лимит, и убедиться, что сервер возвращает 429
+    c: Посмотреть логи БД
+    d: Отключить кэш и проверить скорость
+  answer: b
+  explanation: Rate limiting проверяется превышением лимита и анализом ответа (обычно
+    429).
+  tags:
+  - api
+  - security
+- id: q151
+  text: Почему важны negative tests?
+  type: single
+  options:
+    a: Они заменяют регрессионное тестирование
+    b: Они всегда выполняются быстрее
+    c: Они проверяют устойчивость системы к некорректным данным и действиям
+    d: Они нужны только для UI
+  answer: c
+  explanation: Negative tests показывают, как система реагирует на ошибки и неожиданный
+    ввод.
+  tags:
+  - test-design
+  - quality
+- id: q152
+  text: В каких случаях применяют chaos testing?
+  type: single
+  options:
+    a: Чтобы уменьшить нагрузку на БД
+    b: Чтобы проверить индексы
+    c: Чтобы ускорить smoke-тесты
+    d: Чтобы проверить устойчивость распределённых систем при сбоях
+  answer: d
+  explanation: Chaos testing симулирует сбои и проверяет отказоустойчивость системы.
+  tags:
+  - chaos
+  - microservices
+- id: q153
+  text: Какую задачу решает data-driven testing?
+  type: single
+  options:
+    a: Позволяет прогонять один и тот же тест с разными наборами данных
+    b: Автоматически оптимизирует SQL-запросы
+    c: Обеспечивает мониторинг логов
+    d: Генерирует UI-тесты
+  answer: a
+  explanation: Data-driven testing повышает покрытие за счёт многократного запуска
+    теста с разными входными данными.
+  tags:
+  - automation
+  - design
+- id: q154
+  text: Как проверить корректность механизма автоскейлинга?
+  type: single
+  options:
+    a: Сравнить метрики SQL-запросов
+    b: Сымитировать рост нагрузки и убедиться, что количество инстансов увеличилось
+    c: Выполнить миграции БД
+    d: Запустить smoke-тесты
+  answer: b
+  explanation: QA может искусственно повысить нагрузку и проверить масштабирование.
+  tags:
+  - cloud
+  - performance
+- id: q155
+  text: Чем отличается integration testing от system testing?
+  type: single
+  options:
+    a: Integration всегда ручное, system — автоматическое
+    b: System применяется только к UI, integration — только к API
+    c: Integration проверяет связки компонентов, system — всю систему целиком
+    d: Различий нет
+  answer: c
+  explanation: Integration фокусируется на взаимодействии модулей, system — на полном
+    функционале.
+  tags:
+  - levels
+  - testing
+- id: q156
+  text: Как QA может проверить корректность логирования ошибок?
+  type: single
+  options:
+    a: Запустить нагрузочный тест
+    b: Посмотреть покрытие кода
+    c: Выполнить rollback
+    d: Вызвать ошибку и убедиться, что она попала в логи с нужным уровнем
+  answer: d
+  explanation: QA может воспроизвести ошибку и убедиться, что она логируется корректно.
+  tags:
+  - logging
+  - qa
+- id: q157
+  text: Зачем использовать mocks при unit-тестировании?
+  type: single
+  options:
+    a: Чтобы изолировать тестируемый модуль от внешних зависимостей
+    b: Чтобы протестировать UI
+    c: Чтобы уменьшить размер логов
+    d: Чтобы ускорить работу базы данных
+  answer: a
+  explanation: Mocks позволяют тестировать модуль независимо от сторонних сервисов
+    и БД.
+  tags:
+  - unit
+  - mocks
+- id: q158
+  text: Чем отличаются system tests от acceptance tests?
+  type: single
+  options:
+    a: System применяются только для API, acceptance — только для UI
+    b: System проверяют систему целиком, acceptance — соответствие требованиям бизнеса
+    c: Acceptance всегда автоматизированные, system — ручные
+    d: Различий нет
+  answer: b
+  explanation: System tests проверяют все функции, acceptance подтверждают ценность
+    для заказчика.
+  tags:
+  - levels
+  - testing
+- id: q159
+  text: Какая цель у performance testing?
+  type: single
+  options:
+    a: Оптимизировать SQL-запросы
+    b: Автоматически генерировать тестовые данные
+    c: Определить стабильность и скорость работы системы под нагрузкой
+    d: Снизить количество багов в UI
+  answer: c
+  explanation: Performance testing выявляет узкие места и проверяет SLA.
+  tags:
+  - performance
+  - metrics
+- id: q160
+  text: Как проверить, что система поддерживает graceful shutdown?
+  type: single
+  options:
+    a: Посмотреть покрытие кода
+    b: Отключить кэш и проверить скорость
+    c: Сравнить логи CI/CD
+    d: Завершить процесс и убедиться, что запросы обработаны корректно
+  answer: d
+  explanation: Graceful shutdown гарантирует, что активные запросы завершаются корректно
+    перед остановкой.
+  tags:
+  - reliability
+  - process
+- id: q161
+  text: "Что является основной целью внедрения Page Object в UI-автотестах?"
+  type: "single"
+  options:
+    a: "Разделение кода тестов и локаторов"
+    b: "Ускорение SQL-запросов"
+    c: "Повышение нагрузки на API"
+    d: "Мониторинг логов"
+  answer: "a"
+  explanation: "Page Object уменьшает дублирование кода и повышает читаемость автотестов."
+  tags: ["automation", "ui"]
+
+- id: q162
+  text: "Какая задача чаще всего стоит перед QA Lead?"
+  type: "single"
+  options:
+    a: "Писать все автотесты самостоятельно"
+    b: "Организация процессов тестирования и управление командой"
+    c: "Оптимизация индексов в базе данных"
+    d: "Развёртывание инфраструктуры Kubernetes"
+  answer: "b"
+  explanation: "QA Lead отвечает за процессы, стратегию тестирования и развитие команды."
+  tags: ["leadership", "process"]
+
+- id: q163
+  text: "В чём преимущество использования тестовых фикстур (fixtures) в автоматизации?"
+  type: "single"
+  options:
+    a: "Тесты становятся стабильнее и меньше зависят от окружения"
+    b: "Фикстуры ускоряют работу базы данных"
+    c: "Фикстуры заменяют ручное тестирование"
+    d: "Фикстуры автоматически пишут баг-репорты"
+  answer: "a"
+  explanation: "Фикстуры помогают изолировать тесты и уменьшить дублирование кода при подготовке данных."
+  tags: ["automation", "pytest"]
+
+- id: q164
+  text: "Какую метрику QA Lead чаще всего использует для оценки эффективности автоматизации?"
+  type: "single"
+  options:
+    a: "Количество строк кода"
+    b: "Процент покрытия регрессионных сценариев автотестами"
+    c: "Число багов в backlog"
+    d: "Время работы SQL-запросов"
+  answer: "b"
+  explanation: "Главная метрика автоматизации — покрытие регрессии автотестами."
+  tags: ["leadership", "metrics"]
+
+- id: q165
+  text: "Что означает термин 'data-driven testing'?"
+  type: "single"
+  options:
+    a: "Запуск тестов с различными наборами данных"
+    b: "Тестирование только базы данных"
+    c: "Выполнение тестов без данных"
+    d: "Тестирование UI"
+  answer: "a"
+  explanation: "Data-driven testing позволяет запускать один сценарий с разными наборами входных данных."
+  tags: ["automation", "strategy"]
+
+- id: q166
+  text: "Что входит в обязанности QA Lead при планировании релиза?"
+  type: "single"
+  options:
+    a: "Только написание автотестов"
+    b: "Анализ рисков, определение объёма тестирования, распределение задач"
+    c: "Только деплой приложения"
+    d: "Только проверка логов"
+  answer: "b"
+  explanation: "QA Lead оценивает риски, планирует тестирование и распределяет задачи в команде."
+  tags: ["leadership", "release"]
+
+- id: q167
+  text: "Какую задачу решает параметризация тестов?"
+  type: "single"
+  options:
+    a: "Позволяет запускать один и тот же тест с разными входными данными"
+    b: "Оптимизирует SQL-запросы"
+    c: "Ускоряет ручное тестирование"
+    d: "Проверяет только UI"
+  answer: "a"
+  explanation: "Параметризация сокращает дублирование и увеличивает покрытие тестами."
+  tags: ["automation", "pytest"]
+
+- id: q168
+  text: "Какую стратегию управления чаще всего используют QA Leads?"
+  type: "single"
+  options:
+    a: "Микроменеджмент всех задач"
+    b: "Scrum или Kanban для организации процессов"
+    c: "Только waterfall"
+    d: "Полное отсутствие процессов"
+  answer: "b"
+  explanation: "Современные QA Leads организуют процессы через Scrum или Kanban."
+  tags: ["leadership", "agile"]
+
+- id: q169
+  text: "Для чего используют mocks в автоматизированном тестировании?"
+  type: "single"
+  options:
+    a: "Изоляция тестируемой системы от внешних зависимостей"
+    b: "Ускорение SQL-запросов"
+    c: "Только тестирование UI"
+    d: "Только мониторинг логов"
+  answer: "a"
+  explanation: "Mocks позволяют тестировать функционал без вызова реальных сервисов."
+  tags: ["automation", "mocks"]
+
+- id: q170
+  text: "Какую ошибку чаще всего допускают QA Leads при внедрении автотестов?"
+  type: "single"
+  options:
+    a: "Запуск автотестов только в продакшн"
+    b: "Отсутствие приоритизации и стратегического подхода"
+    c: "Полная замена ручного тестирования"
+    d: "Использование фикстур"
+  answer: "b"
+  explanation: "Без стратегии и приоритизации автотесты становятся дорогостоящими и неэффективными."
+  tags: ["leadership", "automation"]
+
+- id: q171
+  text: "Какую задачу решает Continuous Integration для автотестов?"
+  type: "single"
+  options:
+    a: "Автоматический запуск тестов при каждом изменении кода"
+    b: "Только ускорение ручного тестирования"
+    c: "Только мониторинг логов"
+    d: "Только хранение багов"
+  answer: "a"
+  explanation: "CI гарантирует регулярный запуск тестов и быстрое обнаружение дефектов."
+  tags: ["automation", "ci-cd"]
+
+- id: q172
+  text: "Какая роль у QA Lead в code review автотестов?"
+  type: "single"
+  options:
+    a: "Следить за архитектурой тестов и стандартами качества"
+    b: "Запускать автотесты вручную"
+    c: "Писать баг-репорты"
+    d: "Редактировать требования"
+  answer: "a"
+  explanation: "QA Lead помогает команде придерживаться стандартов и улучшать архитектуру автотестов."
+  tags: ["leadership", "code-review"]
+
+- id: q173
+  text: "Что такое test pyramid в автоматизации?"
+  type: "single"
+  options:
+    a: "Модель распределения автотестов по уровням"
+    b: "Пирамида KPI для QA Lead"
+    c: "Схема логирования багов"
+    d: "Метод стресс-тестирования"
+  answer: "a"
+  explanation: "Пирамида тестирования показывает баланс: много unit-тестов, меньше интеграционных и мало UI."
+  tags: ["automation", "strategy"]
+
+- id: q174
+  text: "Какую ошибку в управлении может допустить QA Lead?"
+  type: "single"
+  options:
+    a: "Слишком детальный контроль за каждой задачей"
+    b: "Поддержка прозрачной коммуникации"
+    c: "Определение приоритетов"
+    d: "Установление метрик качества"
+  answer: "a"
+  explanation: "Микроменеджмент снижает мотивацию команды и мешает эффективности."
+  tags: ["leadership", "process"]
+
+- id: q175
+  text: "Что означает подход BDD в автоматизации?"
+  type: "single"
+  options:
+    a: "Behavior Driven Development — тесты описываются на языке поведения"
+    b: "Big Data Development"
+    c: "Base Data Debugging"
+    d: "Backend Driven Deployment"
+  answer: "a"
+  explanation: "BDD использует язык, понятный бизнесу, и помогает выстраивать тесты по сценарию."
+  tags: ["automation", "bdd"]
+
+- id: q176
+  text: "Что чаще всего входит в обязанности QA Lead при найме сотрудников?"
+  type: "single"
+  options:
+    a: "Проведение технических интервью и оценка soft skills кандидата"
+    b: "Написание SQL-запросов"
+    c: "Поддержка Kubernetes"
+    d: "Настройка мониторинга"
+  answer: "a"
+  explanation: "QA Lead участвует в подборе сотрудников и формировании команды."
+  tags: ["leadership", "hiring"]
+
+- id: q177
+  text: "Для чего используют test doubles (mocks, stubs, fakes)?"
+  type: "single"
+  options:
+    a: "Для имитации зависимостей и упрощения тестирования"
+    b: "Для оптимизации индексов"
+    c: "Для логирования багов"
+    d: "Для деплоя приложения"
+  answer: "a"
+  explanation: "Test doubles позволяют тестировать систему без сложных внешних зависимостей."
+  tags: ["automation", "mocks"]
+
+- id: q178
+  text: "Какой навык особенно важен для QA Lead?"
+  type: "single"
+  options:
+    a: "Только знание SQL"
+    b: "Умение мотивировать и развивать команду"
+    c: "Только знание DevOps"
+    d: "Только написание автотестов"
+  answer: "b"
+  explanation: "QA Lead должен уметь управлять людьми и развивать их компетенции."
+  tags: ["leadership", "soft-skills"]
+- id: q179
+  text: "Какую задачу решает test fixture в Pytest?"
+  type: "single"
+  options:
+    a: "Автоматически пишет баг-репорты"
+    b: "Позволяет готовить и переиспользовать окружение для тестов"
+    c: "Оптимизирует SQL-запросы"
+    d: "Запускает деплой приложения"
+  answer: "b"
+  explanation: "Fixtures упрощают подготовку тестовых данных и освобождение ресурсов."
+  tags: ["automation", "pytest"]
+
+- id: q180
+  text: "Что является одним из ключевых навыков QA Lead?"
+  type: "single"
+  options:
+    a: "Управление приоритетами и коммуникация"
+    b: "Только написание unit-тестов"
+    c: "Только оптимизация индексов в БД"
+    d: "Только деплой Kubernetes"
+  answer: "a"
+  explanation: "Лид отвечает не только за тесты, но и за приоритеты, прозрачность и взаимодействие."
+  tags: ["leadership", "soft-skills"]
+
+- id: q181
+  text: "Что такое CI/CD pipeline в контексте автотестов?"
+  type: "single"
+  options:
+    a: "Набор SQL-скриптов для базы"
+    b: "Процесс автоматизированной сборки, тестирования и деплоя"
+    c: "Модель ветвления Git"
+    d: "Ручная проверка требований"
+  answer: "b"
+  explanation: "CI/CD включает автоматический запуск тестов и доставку изменений."
+  tags: ["automation", "ci-cd"]
+
+- id: q182
+  text: "Что из этого чаще всего входит в обязанности QA Lead?"
+  type: "single"
+  options:
+    a: "Проверка тест-кейсов на полноту и соответствие требованиям"
+    b: "Создание сетевых протоколов"
+    c: "Разработка ядра базы данных"
+    d: "Проведение нагрузочного теста вручную"
+  answer: "a"
+  explanation: "Лид оценивает тестовую документацию и следит за качеством процесса."
+  tags: ["leadership", "process"]
+
+- id: q183
+  text: "Что означает подход keyword-driven testing?"
+  type: "single"
+  options:
+    a: "Автоматизация тестов без кода"
+    b: "Тесты описываются через ключевые слова, которые выполняют действия"
+    c: "Тесты всегда запускаются вручную"
+    d: "Тестирование только UI"
+  answer: "b"
+  explanation: "Keyword-driven testing позволяет выносить логику теста в ключевые слова."
+  tags: ["automation", "strategy"]
+
+- id: q184
+  text: "Какая ошибка управления снижает доверие к QA Lead?"
+  type: "single"
+  options:
+    a: "Отсутствие прозрачной коммуникации и обратной связи"
+    b: "Поддержка обучения команды"
+    c: "Чёткая приоритизация задач"
+    d: "Ведение метрик качества"
+  answer: "a"
+  explanation: "Лид без коммуникации теряет доверие и команду."
+  tags: ["leadership", "soft-skills"]
+
+- id: q185
+  text: "Что даёт использование Docker в автоматизированных тестах?"
+  type: "single"
+  options:
+    a: "Ускоряет SQL-запросы"
+    b: "Повторяемое окружение для тестов"
+    c: "Только мониторинг логов"
+    d: "Только оптимизация UI"
+  answer: "b"
+  explanation: "Docker гарантирует одинаковое окружение для тестов на разных машинах."
+  tags: ["automation", "containers"]
+
+- id: q186
+  text: "Что входит в обязанности QA Lead при работе с командой?"
+  type: "single"
+  options:
+    a: "Организация обучения и развитие компетенций"
+    b: "Написание сетевых драйверов"
+    c: "Оптимизация индексов БД"
+    d: "Деплой микросервисов"
+  answer: "a"
+  explanation: "Лид должен помогать команде расти, а не только управлять тестами."
+  tags: ["leadership", "team"]
+
+- id: q187
+  text: "Зачем использовать allure или аналогичные отчёты?"
+  type: "single"
+  options:
+    a: "Для генерации SQL-запросов"
+    b: "Для наглядной визуализации результатов тестов"
+    c: "Для оптимизации индексов"
+    d: "Для деплоя Docker"
+  answer: "b"
+  explanation: "Allure упрощает анализ тестов и их результатов."
+  tags: ["automation", "reporting"]
+
+- id: q188
+  text: "Что важно для QA Lead при взаимодействии с разработкой?"
+  type: "single"
+  options:
+    a: "Конфликтовать и спорить"
+    b: "Обеспечивать прозрачность дефектов и приоритетов"
+    c: "Только писать баг-репорты"
+    d: "Только запускать автотесты"
+  answer: "b"
+  explanation: "Лид выступает связующим звеном между QA и девами."
+  tags: ["leadership", "communication"]
+
+- id: q189
+  text: "Что означает термин smoke tests?"
+  type: "single"
+  options:
+    a: "Тесты для проверки базового функционала после сборки"
+    b: "Тесты для проверки нагрузки на систему"
+    c: "Тесты для проверки UI вручную"
+    d: "Тесты для деплоя"
+  answer: "a"
+  explanation: "Smoke проверяет, что сборка жизнеспособна и можно двигаться дальше."
+  tags: ["automation", "levels"]
+
+- id: q190
+  text: "Что важно для QA Lead в управлении командой?"
+  type: "single"
+  options:
+    a: "Микроменеджмент"
+    b: "Делегирование и доверие"
+    c: "Изоляция команды от процессов"
+    d: "Отсутствие обратной связи"
+  answer: "b"
+  explanation: "Эффективный лидер делегирует и доверяет команде."
+  tags: ["leadership", "team"]
+
+- id: q191
+  text: "Зачем использовать параметризацию в Pytest?"
+  type: "single"
+  options:
+    a: "Чтобы запускать один тест с разными данными"
+    b: "Чтобы ускорить SQL-запросы"
+    c: "Чтобы деплоить Kubernetes"
+    d: "Чтобы писать баги"
+  answer: "a"
+  explanation: "Параметризация сокращает дублирование тестов."
+  tags: ["automation", "pytest"]
+
+- id: q192
+  text: "Какая стратегическая ошибка встречается у QA Leads?"
+  type: "single"
+  options:
+    a: "Фокус только на количестве тестов, а не на их ценности"
+    b: "Поддержка метрик покрытия"
+    c: "Обучение команды"
+    d: "Планирование релизов"
+  answer: "a"
+  explanation: "Важно качество тестов, а не их количество."
+  tags: ["leadership", "strategy"]
+
+- id: q193
+  text: "Зачем используют mocking внешних сервисов в API-тестах?"
+  type: "single"
+  options:
+    a: "Чтобы ускорить ручное тестирование"
+    b: "Чтобы изолировать тестируемый сервис и контролировать ответы"
+    c: "Чтобы писать баги"
+    d: "Чтобы деплоить Kubernetes"
+  answer: "b"
+  explanation: "Моки позволяют не зависеть от сторонних API."
+  tags: ["automation", "api"]
+
+- id: q194
+  text: "Что является важным навыком для QA Lead при планировании?"
+  type: "single"
+  options:
+    a: "Только написание unit-тестов"
+    b: "Оценка рисков и приоритетов"
+    c: "Только оптимизация SQL"
+    d: "Только деплой"
+  answer: "b"
+  explanation: "Оценка рисков и приоритизация помогают правильно распределить ресурсы."
+  tags: ["leadership", "planning"]
+
+- id: q195
+  text: "Что означает принцип DRY в автоматизации тестов?"
+  type: "single"
+  options:
+    a: "Don't Repeat Yourself — избегать дублирования кода"
+    b: "Debug Regularly Yourself"
+    c: "Deploy Rapidly Yourself"
+    d: "Do Run Yourself"
+  answer: "a"
+  explanation: "DRY повышает качество кода тестов и облегчает поддержку."
+  tags: ["automation", "quality"]
+
+- id: q196
+  text: "Какую ошибку может допустить QA Lead в управлении коммуникацией?"
+  type: "single"
+  options:
+    a: "Недостаток прозрачности и обратной связи"
+    b: "Регулярные синки команды"
+    c: "Постановка приоритетов"
+    d: "Формирование стратегии"
+  answer: "a"
+  explanation: "Недостаток обратной связи приводит к потере доверия."
+  tags: ["leadership", "communication"]
+
+- id: q197
+  text: "Что означает принцип KISS для автотестов?"
+  type: "single"
+  options:
+    a: "Keep It Simple, Stupid — тесты должны быть простыми"
+    b: "Keep It Secure, Stable"
+    c: "Keep It Synchronized"
+    d: "Keep It Short"
+  answer: "a"
+  explanation: "Простые тесты легче поддерживать и сопровождать."
+  tags: ["automation", "quality"]
+
+- id: q198
+  text: "Что должен уметь QA Lead при управлении приоритетами?"
+  type: "single"
+  options:
+    a: "Учитывать бизнес-ценность и риски при выборе тестов"
+    b: "Игнорировать обратную связь"
+    c: "Фокусироваться только на количестве багов"
+    d: "Только запускать автотесты"
+  answer: "a"
+  explanation: "Приоритизация тестов должна учитывать ценность и риски."
+  tags: ["leadership", "planning"]
+
+- id: q199
+  text: "Зачем использовать test reporting системы (например, Allure, ReportPortal)?"
+  type: "single"
+  options:
+    a: "Для оптимизации SQL"
+    b: "Для деплоя Docker"
+    c: "Для централизованного анализа результатов автотестов"
+    d: "Для написания багов"
+  answer: "c"
+  explanation: "Системы репортинга упрощают анализ и ускоряют обратную связь."
+  tags: ["automation", "reporting"]
+
+- id: q200
+  text: "Что особенно важно для QA Lead при построении стратегии тестирования?"
+  type: "single"
+  options:
+    a: "Фокус на автоматизации, метриках и командном взаимодействии"
+    b: "Только ручное тестирование"
+    c: "Только SQL-запросы"
+    d: "Только деплой"
+  answer: "a"
+  explanation: "Стратегия должна учитывать баланс автоматизации, метрик и взаимодействия в команде."
+  tags: ["leadership", "strategy"]
