@@ -6,6 +6,8 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.client.default import DefaultBotProperties
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+from settings import TELEGRAM_TOKEN, CHANNEL_URL
 
 from settings import TELEGRAM_TOKEN
 from packs_loader import load_packs
@@ -23,6 +25,13 @@ def build_levels_kb():
     kb.button(text="🚀 Для продвинутых", callback_data="level:advanced")
     kb.button(text="🎲 Рандом", callback_data="level:random")
     kb.adjust(1)
+    return kb.as_markup()
+
+def build_post_results_kb(channel_url: str):
+    kb = InlineKeyboardBuilder()
+    kb.button(text="🧪 Квиз", callback_data="menu:quiz")
+    kb.button(text="🧠 QA Mind", url=channel_url)  # внешняя ссылка
+    kb.adjust(2)
     return kb.as_markup()
 
 
@@ -94,6 +103,11 @@ async def main():
         engine.sessions.pop(m.from_user.id, None)
         await m.answer("Ок, начнём заново ⚒️. Выбери уровень:", reply_markup=build_levels_kb())
 
+    @dp.callback_query(F.data == "menu:quiz")
+    async def open_quiz_menu(c: CallbackQuery):
+        await c.message.answer("Выбери уровень сложности:", reply_markup=build_levels_kb())
+        await c.answer()
+
     # Обработка ответов на вопросы
     @dp.message()
     async def any_text(m: Message):
@@ -108,6 +122,10 @@ async def main():
             sticker_id = res.get("sticker_id")
             if sticker_id:
                 await m.answer_sticker(sticker_id)
+            await m.answer(
+                "Продолжим? 👇",
+                reply_markup=build_post_results_kb(CHANNEL_URL)
+            )
         else:
             await m.answer(engine.render_question(res["next"]))
 
