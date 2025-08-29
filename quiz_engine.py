@@ -154,9 +154,9 @@ class QuizEngine:
             sticker_id = mood["sticker"]
 
             # топ-3 проблемных тега (оставим как подсказку)
-            hardest = sorted(s["errors_by_tag"].items(), key=lambda kv: kv[1], reverse=True)[:3]
+            hardest = sorted(s["errors_by_tag"].items(), key=lambda kv: kv[1], reverse=True)[:7]
             raw_tags = [t for t, _ in hardest]
-            topics_line = f"Темы для прокачки: {render_tags(raw_tags, TAGS_MAP)}"
+            topics_line = f"*❗️Темы для прокачки*: {render_tags(raw_tags, TAGS_MAP)}"
 
             # список неверных с правильными ответами
             if s["wrong_items"]:

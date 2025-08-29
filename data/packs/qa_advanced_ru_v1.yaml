@@ -2665,3 +2665,613 @@ questions:
   answer: "a"
   explanation: "Стратегия должна учитывать баланс автоматизации, метрик и взаимодействия в команде."
   tags: ["leadership", "strategy"]
+- id: q201
+  text: Что такое Camunda в контексте тестирования?
+  type: single
+  options:
+    a: Платформа для оркестрации бизнес-процессов (BPMN, DMN), которую можно тестировать как часть системы
+    b: СУБД для транзакционной обработки
+    c: Сервис для мониторинга логов
+    d: Система управления тест-кейсами
+  answer: a
+  explanation: Camunda используется для описания и исполнения бизнес-процессов. QA тестирует процессы, правила и интеграции.
+  tags: ["camunda", "bpmn", "process"]
+
+- id: q202
+  text: Какой инструмент чаще всего используют для визуализации бизнес-процессов Camunda?
+  type: single
+  options:
+    a: Jenkins
+    b: Camunda Modeler
+    c: Kibana
+    d: Postman
+  answer: b
+  explanation: Camunda Modeler позволяет строить и редактировать BPMN/DMN диаграммы.
+  tags: ["camunda", "bpmn"]
+
+- id: q203
+  text: В чём особенность тестирования BPMN-процессов?
+  type: single
+  options:
+    a: Проверка логов API
+    b: Только нагрузочное тестирование
+    c: Проверка последовательности задач и условий перехода
+    d: Проверка SQL индексов
+  answer: c
+  explanation: QA проверяет, что процесс следует заданному сценарию и корректно обрабатывает ветвления.
+  tags: ["camunda", "bpmn", "testing"]
+
+- id: q204
+  text: Что означает stage "Build" в CI/CD пайплайне?
+  type: single
+  options:
+    a: Сборка артефакта (например, jar, docker-образа) из исходного кода
+    b: Запуск юнит-тестов
+    c: Создание инфраструктуры
+    d: Деплой в production
+  answer: d
+  explanation: Build-stage создаёт исполняемый артефакт для последующих шагов.
+  tags: ["ci-cd", "automation"]
+
+- id: q205
+  text: Что обычно выполняется на этапе "Test" в CI/CD пайплайне?
+  type: single
+  options:
+    a: Запуск юнит-, интеграционных и API-тестов
+    b: Деплой в production
+    c: Мониторинг SLA
+    d: Создание документации
+  answer: a
+  explanation: Test-stage запускает автотесты разных уровней, чтобы убедиться в качестве кода.
+  tags: ["ci-cd", "automation", "testing"]
+
+- id: q206
+  text: Что означает stage "Deploy" в CI/CD пайплайне?
+  type: single
+  options:
+    a: Тестирование UX
+    b: Выкатка артефакта на окружение (staging/prod)
+    c: Оптимизация SQL индексов
+    d: Создание документации
+  answer: b
+  explanation: Deploy-stage разворачивает приложение в целевом окружении.
+  tags: ["ci-cd", "release"]
+
+- id: q207
+  text: Какую роль выполняет Jenkins в CI/CD?
+  type: single
+  options:
+    a: Система управления тест-кейсами
+    b: Инструмент визуализации BPMN
+    c: Сервер автоматизации, запускающий сборки и тесты
+    d: Мониторинг SLA
+  answer: c
+  explanation: Jenkins управляет пайплайнами (билд, тесты, деплой).
+  tags: ["ci-cd", "tools"]
+
+- id: q208
+  text: Что такое "pipeline as code"?
+  type: single
+  options:
+    a: SQL-скрипты для CI/CD
+    b: Хранение багов в GitHub Issues
+    c: Хранение пайплайнов только вручную
+    d: Хранение пайплайнов в YAML/Groovy, как части кода репозитория
+  answer: d
+  explanation: Pipeline-as-code позволяет версионировать и управлять пайплайнами как кодом.
+  tags: ["ci-cd", "devops"]
+
+- id: q209
+  text: Что чаще всего проверяют в unit-тестах Camunda процессов?
+  type: single
+  options:
+    a: Корректность переходов между задачами
+    b: SQL индексы
+    c: UI формы
+    d: SLA доступности
+  answer: a
+  explanation: Unit-тесты Camunda проверяют переходы и правила внутри BPMN-процессов.
+  tags: ["camunda", "bpmn", "automation"]
+
+- id: q210
+  text: Что означает понятие "continuous testing"?
+  type: single
+  options:
+    a: Тесты запускаются только вручную
+    b: Автотесты выполняются на всех этапах CI/CD пайплайна
+    c: Тесты запускаются только ночью
+    d: Тесты ограничены unit-уровнем
+  answer: b
+  explanation: Continuous testing — тесты встроены в каждый этап разработки и доставки.
+  tags: ["ci-cd", "automation", "strategy"]
+
+- id: q211
+  text: Какую задачу решает GitHub Actions в QA процессах?
+  type: single
+  options:
+    a: Визуализация BPMN
+    b: Хранение багов
+    c: Автоматический запуск тестов и пайплайнов в GitHub
+    d: SQL-мониторинг
+  answer: c
+  explanation: GitHub Actions позволяет запускать тесты и деплой при событиях в репозитории.
+  tags: ["ci-cd", "tools"]
+
+- id: q212
+  text: Что означает термин "smoke tests" в CI пайплайне?
+  type: single
+  options:
+    a: Полное регрессионное тестирование
+    b: Мониторинг SLA
+    c: Тестирование только UX
+    d: Быстрая проверка основных функций сборки
+  answer: d
+  explanation: Smoke-тесты — минимальный набор проверок для уверенности, что сборка рабочая.
+  tags: ["ci-cd", "smoke"]
+
+- id: q213
+  text: Чем отличается Camunda от классического монолита?
+  type: single
+  options:
+    a: Camunda оркестрирует процессы, а не реализует бизнес-логику как монолит
+    b: Camunda запускает SQL напрямую
+    c: Camunda = CI/CD сервер
+    d: Camunda — инструмент мониторинга логов
+  answer: a
+  explanation: Camunda управляет процессами, бизнес-логика реализуется сервисами.
+  tags: ["camunda", "architecture"]
+
+- id: q214
+  text: Что означает стратегия "shift-left" в контексте CI/CD?
+  type: single
+  options:
+    a: Тестирование только на продакшн
+    b: Сдвиг тестирования на ранние стадии пайплайна
+    c: Игнорирование unit-тестов
+    d: Тестирование только UI
+  answer: b
+  explanation: Shift-left означает тестирование максимально рано, ещё в пайплайне.
+  tags: ["ci-cd", "strategy"]
+
+- id: q215
+  text: Какую задачу решает инструмент Allure?
+  type: single
+  options:
+    a: CI/CD сервер
+    b: Воркфлоу BPMN
+    c: Репортинг и визуализация результатов автотестов
+    d: Мониторинг логов
+  answer: c
+  explanation: Allure генерирует красивые отчёты о прогоне автотестов.
+  tags: ["automation", "reporting"]
+
+- id: q216
+  text: Зачем Camunda используют DMN (Decision Model and Notation)?
+  type: single
+  options:
+    a: Для описания SQL индексов
+    b: Для мониторинга SLA
+    c: Для ручного деплоя
+    d: Для моделирования правил принятия решений
+  answer: d
+  explanation: DMN описывает правила решений (например, расчёт комиссии) в виде таблиц.
+  tags: ["camunda", "dmn"]
+
+- id: q217
+  text: Что означает "parallel gateway" в BPMN Camunda?
+  type: single
+  options:
+    a: Разветвление потока на несколько параллельных задач
+    b: Мониторинг SLA
+    c: SQL JOIN
+    d: Тестирование API
+  answer: a
+  explanation: Parallel gateway запускает несколько задач одновременно.
+  tags: ["camunda", "bpmn"]
+
+- id: q218
+  text: Что чаще всего проверяют QA в end-to-end тестах CI/CD пайплайна?
+  type: single
+  options:
+    a: SQL индексы
+    b: Полный пользовательский сценарий от API до UI
+    c: Только SLA
+    d: Только миграции
+  answer: b
+  explanation: E2E-тесты в пайплайне проверяют пользовательские сценарии целиком.
+  tags: ["ci-cd", "end-to-end"]
+
+- id: q219
+  text: Что означает "rollback" в CI/CD пайплайне?
+  type: single
+  options:
+    a: Удаление логов
+    b: Тестирование UX
+    c: Откат на предыдущую стабильную версию при сбоях
+    d: Добавление новых индексов
+  answer: c
+  explanation: Rollback — возврат к предыдущей версии при ошибках в новой сборке.
+  tags: ["ci-cd", "release"]
+
+- id: q220
+  text: Что означает "pipeline gating"?
+  type: single
+  options:
+    a: Автоматическое создание SQL индексов
+    b: Тестирование UI
+    c: Ручной деплой
+    d: Условные проверки (quality gates), которые блокируют следующий шаг пайплайна
+  answer: d
+  explanation: Quality gates проверяют покрытие, ошибки линтера, тесты и блокируют пайплайн при несоответствии.
+  tags: ["ci-cd", "quality"]
+
+- id: q221
+  text: Чем отличается Camunda DMN от BPMN?
+  type: single
+  options:
+    a: BPMN описывает процессы, DMN — таблицы решений
+    b: DMN — для процессов, BPMN — для правил
+    c: DMN — для мониторинга, BPMN — для SQL
+    d: Разницы нет
+  answer: a
+  explanation: BPMN описывает процессы, DMN — таблицы решений.
+  tags: ["camunda", "dmn", "bpmn"]
+
+- id: q222
+  text: Что означает "canary tests" в CI/CD?
+  type: single
+  options:
+    a: Smoke-тесты в staging
+    b: Тесты, запускаемые на небольшой части трафика перед полным релизом
+    c: Unit-тесты в пайплайне
+    d: SQL миграции
+  answer: b
+  explanation: Canary tests проверяют новую версию на малой доле пользователей.
+  tags: ["ci-cd", "strategy"]
+
+- id: q223
+  text: Что означает принцип "infrastructure as code"?
+  type: single
+  options:
+    a: Ручное управление инфраструктурой
+    b: SQL скрипты для API
+    c: Управление инфраструктурой через код (Terraform, Ansible)
+    d: Только мониторинг
+  answer: c
+  explanation: Infrastructure as Code позволяет управлять окружением через код, а не вручную.
+  tags: ["devops", "infrastructure"]
+
+- id: q224
+  text: Что означает "quality gate" в контексте SonarQube?
+  type: single
+  options:
+    a: Лимит на SQL-запросы
+    b: Ручное тестирование UI
+    c: SLA для микросервисов
+    d: Набор условий (code coverage, баги, уязвимости), которые должны быть пройдены
+  answer: d
+  explanation: Quality gate в SonarQube — набор метрик качества, без которых код не проходит дальше.
+  tags: ["quality", "automation"]
+
+- id: q225
+  text: Что означает "feature flag testing"?
+  type: single
+  options:
+    a: Проверка работы функционала при включении/выключении фич-флагов
+    b: Тестирование UI вручную
+    c: Проверка SLA
+    d: Тестирование SQL индексов
+  answer: a
+  explanation: Feature flag testing проверяет разные конфигурации продукта с включенными и выключенными фичами.
+  tags: ["release", "strategy", "automation"]
+- id: q225
+  text: Что является ключевым преимуществом использования Selenium WebDriver?
+  type: single
+  options:
+    a: Поддержка множества браузеров и языков программирования
+    b: Автоматическая генерация SQL-запросов
+    c: Встроенный CI/CD пайплайн
+    d: Анализ производительности API
+  answer: a
+  explanation: Selenium WebDriver позволяет управлять браузерами через код и поддерживает разные языки.
+  tags: ["automation", "ui", "selenium"]
+
+- id: q226
+  text: Какой инструмент чаще всего применяют для end-to-end тестирования на JavaScript?
+  type: single
+  options:
+    a: JMeter
+    b: Cypress
+    c: Postman
+    d: Grafana
+  answer: b
+  explanation: Cypress — современный инструмент для e2e-тестирования в браузере.
+  tags: ["automation", "ui", "cypress"]
+
+- id: q227
+  text: Чем отличается Playwright от Selenium?
+  type: single
+  options:
+    a: Playwright работает только с Chrome
+    b: Playwright используется только для API
+    c: Playwright поддерживает мультибраузерность, быстрый запуск и работу с несколькими вкладками
+    d: Различий нет
+  answer: c
+  explanation: Playwright обеспечивает быстрые тесты с поддержкой мультибраузерности и контекстов.
+  tags: ["automation", "ui", "playwright"]
+
+- id: q228
+  text: Что означает Page Object Model (POM) в автоматизации?
+  type: single
+  options:
+    a: Метод нагрузочного тестирования
+    b: Подход BDD
+    c: Отчётность в Allure
+    d: Шаблон проектирования, отделяющий логику тестов от локаторов
+  answer: d
+  explanation: POM уменьшает дублирование кода и делает тесты более поддерживаемыми.
+  tags: ["automation", "design", "ui"]
+
+- id: q229
+  text: Для чего в Pytest используют фикстуры (fixtures)?
+  type: single
+  options:
+    a: Для подготовки и очистки данных/окружения перед тестами
+    b: Для запуска UI тестов
+    c: Для мониторинга логов
+    d: Для создания SQL индексов
+  answer: a
+  explanation: Фикстуры помогают изолировать тесты и переиспользовать код подготовки данных.
+  tags: ["automation", "pytest"]
+
+- id: q230
+  text: Какую задачу решает параметризация тестов в Pytest?
+  type: single
+  options:
+    a: Ускоряет миграции БД
+    b: Позволяет запускать один тест с разными наборами данных
+    c: Автоматически деплоит приложение
+    d: Сокращает количество логов
+  answer: b
+  explanation: Параметризация увеличивает покрытие и уменьшает дублирование тестов.
+  tags: ["automation", "pytest"]
+
+- id: q231
+  text: Что чаще всего используют для описания сценариев BDD?
+  type: single
+  options:
+    a: YAML
+    b: JSON
+    c: Gherkin
+    d: SQL
+  answer: c
+  explanation: Gherkin описывает сценарии в стиле Given-When-Then.
+  tags: ["automation", "bdd"]
+
+- id: q232
+  text: Какая цель у data-driven testing (DDT)?
+  type: single
+  options:
+    a: Сократить время билда
+    b: Автоматически генерировать отчёты
+    c: Ускорить SQL-запросы
+    d: Запускать один тест с разными входными данными из внешних источников
+  answer: d
+  explanation: DDT позволяет запускать тест с таблицами данных или CSV/JSON файлами.
+  tags: ["automation", "strategy"]
+
+- id: q233
+  text: Какую задачу решает Allure Report?
+  type: single
+  options:
+    a: Визуализирует результаты автотестов
+    b: Генерирует SQL-запросы
+    c: Оптимизирует работу CI/CD
+    d: Мониторит SLA
+  answer: a
+  explanation: Allure создаёт красивые отчёты и графики по результатам тестов.
+  tags: ["automation", "reporting"]
+
+- id: q234
+  text: Что означает принцип DRY в автоматизации тестов?
+  type: single
+  options:
+    a: Debug Regularly Yourself
+    b: Don't Repeat Yourself — избегать дублирования кода
+    c: Deploy Rapidly Yourself
+    d: Do Run Yourself
+  answer: b
+  explanation: DRY помогает держать тесты читаемыми и легко поддерживаемыми.
+  tags: ["automation", "quality"]
+
+- id: q235
+  text: Какой инструмент чаще всего используют для тестирования API с автотестами?
+  type: single
+  options:
+    a: Figma
+    b: Grafana
+    c: Postman + Newman
+    d: Selenium
+  answer: c
+  explanation: Newman позволяет запускать Postman коллекции как автотесты.
+  tags: ["automation", "api", "tools"]
+
+- id: q236
+  text: Что делает Jenkins в процессе автоматизации?
+  type: single
+  options:
+    a: Автоматически генерирует SQL
+    b: Управляет SQL миграциями
+    c: Автоматизирует запуск тестов и деплой
+    d: Создаёт UI макеты
+  answer: c
+  explanation: Jenkins используется для CI/CD пайплайнов и автоматизации тестов.
+  tags: ["automation", "ci-cd"]
+
+- id: q237
+  text: Что означает TestNG в Java автоматизации?
+  type: single
+  options:
+    a: Система логирования
+    b: YAML-файл конфигурации
+    c: Тестовый фреймворк для Java с поддержкой аннотаций, параметризации и отчетности
+    d: Утилита для миграций
+  answer: c
+  explanation: TestNG — популярный Java фреймворк для юнит и интеграционных тестов.
+  tags: ["automation", "java", "frameworks"]
+
+- id: q238
+  text: Что такое CI/CD pipeline для автотестов?
+  type: single
+  options:
+    a: Отчёт о багах
+    b: Только ручной запуск smoke-тестов
+    c: UI-дизайн макетов
+    d: Автоматический процесс сборки, запуска тестов и деплоя
+  answer: d
+  explanation: CI/CD пайплайн автоматизирует запуск тестов и публикацию результатов.
+  tags: ["automation", "ci-cd"]
+
+- id: q239
+  text: Для чего используют библиотеку Pytest?
+  type: single
+  options:
+    a: Для проектирования UI
+    b: Для ручного тестирования
+    c: Для написания и запуска автотестов на Python
+    d: Для мониторинга метрик
+  answer: c
+  explanation: Pytest — стандарт для написания юнит, API и UI автотестов на Python.
+  tags: ["automation", "pytest"]
+
+- id: q240
+  text: Что означает BDD (Behavior Driven Development)?
+  type: single
+  options:
+    a: Backend Driven Development
+    b: Build Deploy Debug
+    c: Big Data Deployment
+    d: Разработка через описание поведения на языке сценариев
+  answer: d
+  explanation: BDD помогает писать тесты, понятные и бизнесу, и разработчикам.
+  tags: ["automation", "bdd"]
+
+- id: q241
+  text: Что делает инструмент Newman?
+  type: single
+  options:
+    a: Запускает коллекции Postman в виде автотестов
+    b: Управляет базами данных
+    c: Деплоит микросервисы
+    d: Анализирует SLA
+  answer: a
+  explanation: Newman позволяет интегрировать Postman-тесты в CI/CD пайплайн.
+  tags: ["automation", "api"]
+
+- id: q242
+  text: Какую задачу решает Docker в автоматизации тестирования?
+  type: single
+  options:
+    a: Генерация тест-кейсов
+    b: Создание изолированного окружения для автотестов
+    c: Логирование багов
+    d: Оптимизация SQL-запросов
+  answer: b
+  explanation: Docker позволяет гарантировать одинаковое окружение для тестов.
+  tags: ["automation", "containers"]
+
+- id: q243
+  text: Что означает JUnit в автоматизации?
+  type: single
+  options:
+    a: CI/CD пайплайн
+    b: Инструмент для UI-дизайна
+    c: Java-фреймворк для написания юнит-тестов
+    d: Система репортинга
+  answer: c
+  explanation: JUnit — основной фреймворк для unit-тестирования на Java.
+  tags: ["automation", "java", "frameworks"]
+
+- id: q244
+  text: Что делает ReportPortal?
+  type: single
+  options:
+    a: Генерирует SQL-запросы
+    b: Автоматически деплоит Docker-образы
+    c: Управляет API контрактами
+    d: Централизует и визуализирует результаты тестов в реальном времени
+  answer: d
+  explanation: ReportPortal собирает и визуализирует результаты автотестов.
+  tags: ["automation", "reporting"]
+
+- id: q245
+  text: Что означает принцип KISS в автоматизации?
+  type: single
+  options:
+    a: Keep It Simple, Stupid — тесты должны быть простыми и читаемыми
+    b: Keep It Secure, Stable
+    c: Keep It Short
+    d: Keep It Synchronized
+  answer: a
+  explanation: Простые тесты легче поддерживать и сопровождать.
+  tags: ["automation", "quality"]
+
+- id: q246
+  text: Какую задачу решает интеграция автотестов в CI/CD?
+  type: single
+  options:
+    a: Ускоряет SQL
+    b: Автоматическая проверка качества на каждом шаге пайплайна
+    c: Оптимизирует UI
+    d: Сокращает количество баг-репортов
+  answer: b
+  explanation: Интеграция тестов в CI/CD обеспечивает быстрый фидбек о качестве кода.
+  tags: ["automation", "ci-cd"]
+
+- id: q247
+  text: Что чаще всего используют для UI автоматизации на Python?
+  type: single
+  options:
+    a: JMeter
+    b: Gatling
+    c: Selenium + Pytest
+    d: Prometheus
+  answer: c
+  explanation: Selenium в связке с Pytest используется для UI автотестов на Python.
+  tags: ["automation", "ui", "python"]
+
+- id: q248
+  text: Что делает инструмент Robot Framework?
+  type: single
+  options:
+    a: Только запускает SQL
+    b: Только визуализирует метрики
+    c: Только деплоит контейнеры
+    d: Фреймворк для keyword-driven автоматизации тестирования
+  answer: d
+  explanation: Robot Framework позволяет писать автотесты в формате ключевых слов.
+  tags: ["automation", "frameworks"]
+
+- id: q249
+  text: Что означает концепция test pyramid?
+  type: single
+  options:
+    a: Больше всего unit-тестов, меньше интеграционных и ещё меньше UI
+    b: Только UI тесты
+    c: Только SQL тесты
+    d: Только smoke-тесты
+  answer: a
+  explanation: Test Pyramid помогает выстраивать баланс автотестов по уровням.
+  tags: ["automation", "strategy"]
+
+- id: q250
+  text: Что чаще всего используют для написания end-to-end тестов в JavaScript?
+  type: single
+  options:
+    a: Pytest
+    b: Playwright
+    c: JUnit
+    d: Allure
+  answer: b
+  explanation: Playwright позволяет писать e2e тесты для браузеров на JS/TS.
+  tags: ["automation", "ui", "playwright"]

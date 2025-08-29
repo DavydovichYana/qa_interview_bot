@@ -80,3 +80,74 @@ serverless: "Serverless архитектуры"
 
 quality: "Качество и code review"
 theory: "Теория тестирования"
+
+# --- Agile и Scrum ---
+scrum: "Scrum (роли, артефакты, события)"
+agile: "Agile и принципы Agile Manifesto"
+
+# --- SDLC и процессы разработки ---
+sdlc: "Жизненный цикл разработки ПО (SDLC)"
+waterfall: "Waterfall модель"
+v-model: "V-Model"
+spiral: "Спиральная модель разработки"
+
+# --- Метрики в Agile/Scrum ---
+velocity: "Velocity (скорость команды)"
+burndown: "Диаграммы Burndown / Burnup"
+
+# --- Инструменты тестировщика ---
+bug-tracking: "Инструменты баг-трекинга (Jira, GitHub Issues)"
+test-management: "Тест-менеджмент (TestRail, Zephyr)"
+automation-tools: "Инструменты автоматизации (Selenium, Cypress)"
+api-tools: "Инструменты для API (Postman, curl)"
+performance-tools: "Инструменты нагрузочного тестирования (JMeter, Locust)"
+monitoring-tools: "Мониторинг и логирование (Grafana, Kibana, ELK)"
+communication-tools: "Командные коммуникации (Slack, Confluence)"
+version-control: "Системы контроля версий (Git)"
+planning-tools: "Планирование (Scrum/Kanban доски в Jira)"
+environments-tools: "Окружения и контейнеризация (Docker)"
+ci-cd-tools: "CI/CD инструменты (Jenkins, GitHub Actions)"
+ui-tools: "UI-дизайн и прототипирование (Figma)"
+
+selenium: "Selenium"
+cypress: "Cypress"
+playwright: "Playwright"
+pytest: "Pytest"
+junit: "JUnit"
+testng: "TestNG"
+robot-framework: "Robot Framework"
+
+bdd: "BDD (поведенческая разработка)"
+gherkin: "Gherkin (Given-When-Then)"
+
+reporting: "Отчётность по тестам"
+allure: "Allure отчёты"
+reportportal: "ReportPortal"
+
+newman: "Newman (Postman CLI)"
+
+java: "Java"
+python: "Python"
+
+containers: "Контейнеры"
+docker: "Docker"
+
+frameworks: "Тестовые фреймворки"
+contracts: "API-контракты"
+documentation: "Документация API"
+
+microservices: "Микросервисы"
+queues: "Очереди сообщений"
+reliability: "Надёжность/ретраи"
+chaos: "Chaos/устойчивость"
+cloud: "Облако и автоскейлинг"
+
+unit: "Юнит-тестирование"
+
+code-review: "Code Review"
+leadership: "Лидерство в QA"
+team: "Командная работа"
+hiring: "Найм и интервью"
+planning: "Планирование"
+soft-skills: "Soft-skills QA"
+

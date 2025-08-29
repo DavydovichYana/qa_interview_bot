@@ -129,7 +129,7 @@ questions:
   answer: b
   explanation: Test Plan — классический артефакт QA.
   tags:
-  - artifacts
+  - test-artifacts
   difficulty: 1
 - id: q10
   text: "Что такое архитектура клиент-сервер (client-server architecture)?"
@@ -205,7 +205,7 @@ questions:
   - code coverage
   - покрытие кода
   - coverage
-  explanation: Code coverage.В ысокий coverage (например, 80–90%) говорит, что тесты проверяют большую часть кода. Но 100% coverage не гарантирует отсутствие багов — тесты могут запускать код, но не проверять корректность результата. Это вспомогательная метрика, а не цель сама по себе.
+  explanation: Code coverage.Высокий coverage (например, 80–90%) говорит, что тесты проверяют большую часть кода. Но 100% coverage не гарантирует отсутствие багов — тесты могут запускать код, но не проверять корректность результата. Это вспомогательная метрика, а не цель сама по себе.
   tags:
   - metrics
   difficulty: 2
@@ -2673,3 +2673,603 @@ questions:
   answer: "b"
   explanation: "E2E тестирование моделирует действия пользователя и проверяет, что система работает как единое целое."
   tags: ["levels", "end-to-end"]
+
+- id: q201
+  text: Какая роль в Scrum отвечает за максимизацию ценности продукта?
+  type: single
+  options:
+    a: Product Owner (Владелец продукта)
+    b: Scrum Master
+    c: Developer (Разработчик)
+    d: QA Engineer (Тестировщик)
+  answer: a
+  explanation: Product Owner (владелец продукта) управляет бэклогом и отвечает за ценность продукта.
+  tags: ["scrum", "roles"]
+
+- id: q202
+  text: Кто отвечает за соблюдение принципов Scrum и помогает команде убирать препятствия?
+  type: single
+  options:
+    a: Product Owner
+    b: Scrum Master
+    c: Project Manager
+    d: Business Analyst
+  answer: b
+  explanation: Scrum Master коучит команду и помогает следовать Scrum.
+  tags: ["scrum", "roles"]
+
+- id: q203
+  text: Какой артефакт Scrum содержит список задач для достижения цели спринта?
+  type: single
+  options:
+    a: Product Backlog (Бэклог продукта)
+    b: Definition of Done (Критерии готовности)
+    c: Sprint Backlog (Бэклог спринта)
+    d: Release Notes
+  answer: c
+  explanation: Sprint Backlog (бэклог спринта) — набор элементов для конкретного спринта.
+  tags: ["scrum"]
+
+- id: q204
+  text: Какое событие Scrum длится максимум 15 минут?
+  type: single
+  options:
+    a: Sprint Planning (Планирование спринта)
+    b: Sprint Review (Обзор спринта)
+    c: Retrospective (Ретроспектива)
+    d: Daily Scrum (Ежедневный скрам)
+  answer: d
+  explanation: Daily Scrum — короткий митинг для синхронизации команды.
+  tags: ["scrum", "events"]
+
+- id: q205
+  text: Что означает термин Definition of Done (DoD)?
+  type: single
+  options:
+    a: Критерии завершённости задачи
+    b: План задач на спринт
+    c: Список багов
+    d: Артефакт релиза
+  answer: a
+  explanation: Definition of Done (Критерии готовности) фиксирует, что считается выполненной задачей.
+  tags: ["scrum"]
+
+- id: q206
+  text: Что из ниже перечисленного является принципом Agile Manifesto?
+  type: multi
+  options:
+    a: Люди и взаимодействие важнее процессов и инструментов
+    b: Работающий продукт важнее исчерпывающей документации
+    c: Сотрудничество с заказчиком важнее согласования условий контракта
+    d: Следование плану важнее изменений
+  answer: ["a", "b", "c"]
+  explanation: Agile ценит людей, продукт и сотрудничество; гибкость важнее жёсткого плана.
+  tags: ["agile"]
+
+- id: q207
+  text: Какой этап SDLC идёт сразу после этапа "requirements" (сбор требований) в Waterfall?
+  type: single
+  options:
+    a: Deployment (Внедрение)
+    b: Testing (Тестирование)
+    c: Design (Проектирование)
+    d: Maintenance (Поддержка)
+  answer: c
+  explanation: После требований проектируют архитектуру и дизайн системы.
+  tags: ["sdlc"]
+
+- id: q208
+  text: Какая модель SDLC отличается последовательными фазами без возврата назад?
+  type: single
+  options:
+    a: V-Model
+    b: Spiral (Спиральная модель)
+    c: Agile
+    d: Waterfall (Каскадная модель)
+  answer: d
+  explanation: Waterfall предполагает строгую последовательность этапов.
+  tags: ["sdlc"]
+
+- id: q209
+  text: В какой модели SDLC тестирование связано с каждой фазой разработки?
+  type: single
+  options:
+    a: Waterfall
+    b: Kanban
+    c: V-Model
+    d: Spiral
+  answer: c
+  explanation: V-Model связывает разработку и тестирование по фазам.
+  tags: ["sdlc"]
+
+- id: q210
+  text: Какой вид тестирования проводится без выполнения кода?
+  type: single
+  options:
+    a: Динамическое
+    b: Функциональное
+    c: Нагрузочное
+    d: Статическое
+  answer: d
+  explanation: Статическое тестирование — анализ требований, кода, документации без запуска программы.
+  tags: ["testing", "types"]
+
+- id: q211
+  text: Что относится к нефункциональному тестированию?
+  type: multi
+  options:
+    a: Юзабилити
+    b: Производительность
+    c: Авторизация пользователя
+    d: Безопасность
+  answer: ["a", "b", "d"]
+  explanation: Авторизация — функциональное тестирование, остальные нефункциональные.
+  tags: ["testing", "non-functional"]
+
+- id: q212
+  text: Какой вид тестирования проводится пользователями в реальной среде?
+  type: single
+  options:
+    a: Acceptance testing (Приёмочное тестирование)
+    b: Smoke testing (Дымовое тестирование)
+    c: Beta testing (Бета-тестирование)
+    d: Unit testing (Модульное тестирование)
+  answer: c
+  explanation: Beta testing проводят реальные пользователи в production-like среде.
+  tags: ["testing", "levels"]
+
+- id: q213
+  text: Какой вид тестирования выполняют заказчик или бизнес-сторона для проверки готовности?
+  type: single
+  options:
+    a: Unit testing (Модульное тестирование)
+    b: Regression testing (Регрессионное тестирование)
+    c: Integration testing (Интеграционное тестирование)
+    d: Acceptance testing (Приёмочное тестирование)
+  answer: d
+  explanation: Acceptance testing проверяет соответствие продукта бизнес-требованиям.
+  tags: ["testing", "levels"]
+
+- id: q214
+  text: Какой инструмент чаще всего используют для баг-трекинга?
+  type: single
+  options:
+    a: Jenkins
+    b: Jira
+    c: Grafana
+    d: GitHub Actions
+  answer: b
+  explanation: Jira — популярный инструмент для управления задачами и багами.
+  tags: ["tools", "bug-tracking"]
+
+- id: q215
+  text: Какой инструмент чаще всего применяют для визуализации метрик и мониторинга?
+  type: single
+  options:
+    a: Postman
+    b: Jenkins
+    c: Jira
+    d: Grafana
+  answer: d
+  explanation: Grafana используется для мониторинга и дашбордов.
+  tags: ["tools", "monitoring"]
+
+- id: q216
+  text: Какой инструмент чаще всего применяют для нагрузочного тестирования?
+  type: single
+  options:
+    a: JMeter
+    b: Selenium
+    c: Postman
+    d: Figma
+  answer: a
+  explanation: Apache JMeter — стандарт для нагрузочного тестирования.
+  tags: ["tools", "performance"]
+
+- id: q217
+  text: Что из этого относится к инструментам для тест-менеджмента?
+  type: multi
+  options:
+    a: Zephyr
+    b: Excel
+    c: Kibana
+    d: TestRail
+  answer: ["a", "b", "d"]
+  explanation: TestRail, Zephyr и даже Excel используют для управления тестами.
+  tags: ["tools", "test-management"]
+
+- id: q218
+  text: Какой инструмент чаще всего применяют для UI-автотестов?
+  type: single
+  options:
+    a: Docker
+    b: GitHub
+    c: Selenium
+    d: JMeter
+  answer: c
+  explanation: Selenium — классический инструмент автоматизации UI.
+  tags: ["tools", "automation"]
+
+- id: q219
+  text: Какой вид тестирования помогает определить, может ли система выдержать экстремальные нагрузки?
+  type: single
+  options:
+    a: Smoke testing (Дымовое тестирование)
+    b: Usability testing (Тестирование удобства использования)
+    c: Stress testing (Стресс-тестирование)
+    d: Integration testing (Интеграционное тестирование)
+  answer: c
+  explanation: Stress testing проверяет работу при нагрузках выше нормальных.
+  tags: ["testing", "performance"]
+
+- id: q220
+  text: Какой вид тестирования проверяет, удобно ли пользоваться системой?
+  type: single
+  options:
+    a: Security testing (Тестирование безопасности)
+    b: Functional testing (Функциональное тестирование)
+    c: Usability testing (Тестирование удобства)
+    d: Regression testing (Регрессионное тестирование)
+  answer: c
+  explanation: Usability testing фокусируется на удобстве интерфейса.
+  tags: ["testing", "ux"]
+
+- id: q221
+  text: Какой инструмент помогает тестировщику работать с REST API?
+  type: single
+  options:
+    a: Jenkins
+    b: Docker
+    c: Zephyr
+    d: Postman
+  answer: d
+  explanation: Postman — самый распространённый инструмент для ручного тестирования API.
+  tags: ["tools", "api"]
+
+- id: q222
+  text: Какая практика в Agile предполагает частые короткие поставки продукта?
+  type: single
+  options:
+    a: Big Bang Release
+    b: Continuous Delivery (Непрерывная доставка)
+    c: Spiral Delivery
+    d: Waterfall Delivery
+  answer: b
+  explanation: Continuous Delivery — частая доставка небольшими итерациями.
+  tags: ["agile", "release"]
+
+- id: q223
+  text: Что означает термин Velocity в Scrum?
+  type: single
+  options:
+    a: Количество митингов в команде
+    b: Количество багов в спринте
+    c: Скорость команды (количество story points, выполненных за спринт)
+    d: Количество задач в бэклоге
+  answer: c
+  explanation: Velocity (скорость команды) показывает производительность в story points за спринт.
+  tags: ["scrum", "metrics"]
+
+- id: q224
+  text: Какой артефакт Scrum отражает оставшуюся работу в спринте?
+  type: single
+  options:
+    a: Kanban Board
+    b: Test Plan
+    c: Burndown Chart (Диаграмма сгорания)
+    d: Gantt Chart
+  answer: c
+  explanation: Burndown Chart показывает динамику выполнения задач в спринте.
+  tags: ["scrum"]
+
+- id: q225
+  text: Какой этап SDLC идёт последним?
+  type: single
+  options:
+    a: Design (Проектирование)
+    b: Deployment (Внедрение)
+    c: Testing (Тестирование)
+    d: Maintenance (Поддержка)
+  answer: d
+  explanation: Maintenance — поддержка системы после релиза.
+  tags: ["sdlc"]
+
+- id: q226
+  text: Какой инструмент чаще всего используют для ведения багов и задач?
+  type: single
+  options:
+    a: Jira
+    b: Git
+    c: Postman
+    d: Figma
+  answer: a
+  explanation: Jira — популярный баг-трекер и система управления задачами.
+  tags: ["tools", "bug-tracking"]
+
+- id: q227
+  text: Какой инструмент применяют для нагрузочного тестирования?
+  type: single
+  options:
+    a: Selenium
+    b: JMeter
+    c: TestRail
+    d: Jenkins
+  answer: b
+  explanation: Apache JMeter — стандартный инструмент для нагрузочного тестирования.
+  tags: ["tools", "performance"]
+
+- id: q228
+  text: Какой инструмент помогает управлять тест-кейсами и результатами тестов?
+  type: single
+  options:
+    a: GitHub
+    b: Confluence
+    c: TestRail
+    d: Slack
+  answer: c
+  explanation: TestRail используют для хранения тест-кейсов, прогонов и отчетности.
+  tags: ["tools", "test-management"]
+
+- id: q229
+  text: Какой инструмент чаще всего применяют для CI/CD?
+  type: single
+  options:
+    a: Figma
+    b: Jenkins
+    c: Postman
+    d: Jira
+  answer: d
+  explanation: Jenkins — один из наиболее популярных CI/CD серверов.
+  tags: ["tools", "ci-cd"]
+
+- id: q230
+  text: Какой инструмент используется для мониторинга логов и поиска ошибок?
+  type: single
+  options:
+    a: Kibana
+    b: Slack
+    c: Postman
+    d: TestRail
+  answer: a
+  explanation: Kibana визуализирует и анализирует логи в связке с Elasticsearch.
+  tags: ["tools", "monitoring"]
+
+- id: q231
+  text: Какой инструмент помогает автоматизировать UI-тестирование?
+  type: single
+  options:
+    a: JMeter
+    b: Selenium
+    c: Git
+    d: Confluence
+  answer: b
+  explanation: Selenium — стандарт для UI-автоматизации.
+  tags: ["tools", "automation"]
+
+- id: q232
+  text: Какой инструмент чаще всего используют для ручного тестирования API?
+  type: single
+  options:
+    a: GitHub Actions
+    b: TestRail
+    c: Postman
+    d: Jenkins
+  answer: c
+  explanation: Postman — удобный инструмент для отправки HTTP-запросов и тестирования API.
+  tags: ["tools", "api"]
+
+- id: q233
+  text: Какой инструмент применяют для совместной документации в команде?
+  type: single
+  options:
+    a: Slack
+    b: Confluence
+    c: Jira
+    d: Figma
+  answer: d
+  explanation: Confluence — вики для проектной документации.
+  tags: ["tools", "documentation"]
+
+- id: q234
+  text: Какой инструмент используют для визуализации метрик и дашбордов?
+  type: single
+  options:
+    a: Grafana
+    b: Git
+    c: Zephyr
+    d: Jira
+  answer: a
+  explanation: Grafana — стандарт для построения дашбордов и мониторинга.
+  tags: ["tools", "monitoring"]
+
+- id: q235
+  text: Какой инструмент используют для управления версиями кода и тестов?
+  type: single
+  options:
+    a: TestRail
+    b: Git
+    c: Selenium
+    d: JMeter
+  answer: b
+  explanation: Git — система контроля версий, часто используется и для автотестов.
+  tags: ["tools", "version-control"]
+
+- id: q236
+  text: Какой инструмент чаще всего применяют для баг-репортов в open-source проектах?
+  type: single
+  options:
+    a: Jenkins
+    b: Jira
+    c: GitHub Issues
+    d: Confluence
+  answer: c
+  explanation: GitHub Issues используют для багов и feature request в open-source.
+  tags: ["tools", "bug-tracking"]
+
+- id: q237
+  text: Какой инструмент используют для визуального проектирования интерфейсов?
+  type: single
+  options:
+    a: Selenium
+    b: Grafana
+    c: JMeter
+    d: Figma
+  answer: d
+  explanation: Figma помогает создавать и проверять UI-дизайн.
+  tags: ["tools", "ui"]
+
+- id: q238
+  text: Какой инструмент применяют для организации командной коммуникации?
+  type: single
+  options:
+    a: Git
+    b: Slack
+    c: Jenkins
+    d: TestRail
+  answer: a
+  explanation: Slack — мессенджер, часто интегрируется с Jira, Jenkins и другими сервисами.
+  tags: ["tools", "communication"]
+
+- id: q239
+  text: Какой инструмент используют для тестирования API в командной строке?
+  type: single
+  options:
+    a: Grafana
+    b: curl
+    c: Postman
+    d: Zephyr
+  answer: b
+  explanation: curl — утилита командной строки для HTTP-запросов.
+  tags: ["tools", "api"]
+
+- id: q240
+  text: Какой инструмент применяют для написания автотестов на Python?
+  type: single
+  options:
+    a: Selenium
+    b: Git
+    c: Pytest
+    d: JMeter
+  answer: c
+  explanation: Pytest — популярный фреймворк для тестов на Python.
+  tags: ["tools", "automation"]
+
+- id: q241
+  text: Какой инструмент используют для автотестов на Java?
+  type: single
+  options:
+    a: Postman
+    b: Jira
+    c: Grafana
+    d: JUnit
+  answer: d
+  explanation: JUnit — основной фреймворк юнит-тестирования на Java.
+  tags: ["tools", "automation"]
+
+- id: q242
+  text: Какой инструмент помогает настроить контейнеризированное окружение для тестов?
+  type: single
+  options:
+    a: Docker
+    b: Jira
+    c: Figma
+    d: TestRail
+  answer: a
+  explanation: Docker создаёт контейнеры для изолированного запуска сервисов.
+  tags: ["tools", "environments"]
+
+- id: q243
+  text: Какой инструмент применяют для CI/CD в GitHub?
+  type: single
+  options:
+    a: Confluence
+    b: GitHub Actions
+    c: Jenkins
+    d: Jira
+  answer: b
+  explanation: GitHub Actions автоматизирует тесты и деплой в GitHub-репозиториях.
+  tags: ["tools", "ci-cd"]
+
+- id: q244
+  text: Какой инструмент позволяет моделировать пользовательские сценарии в браузере?
+  type: single
+  options:
+    a: TestRail
+    b: Jenkins
+    c: Selenium IDE
+    d: JMeter
+  answer: c
+  explanation: Selenium IDE записывает и воспроизводит сценарии в браузере.
+  tags: ["tools", "automation"]
+
+- id: q245
+  text: Какой инструмент используют для управления требованиями и user stories?
+  type: single
+  options:
+    a: Docker
+    b: Confluence
+    c: Grafana
+    d: Jira
+  answer: d
+  explanation: Jira часто применяют для управления требованиями и user stories.
+  tags: ["tools", "requirements"]
+
+- id: q246
+  text: Какой инструмент помогает собирать метрики логов, передавая их в Elasticsearch?
+  type: single
+  options:
+    a: Logstash
+    b: Selenium
+    c: Jenkins
+    d: Slack
+  answer: a
+  explanation: Logstash собирает и отправляет данные для анализа в ELK-стеке.
+  tags: ["tools", "logging"]
+
+- id: q247
+  text: Какой инструмент чаще всего используют для планирования спринтов и Kanban-досок?
+  type: single
+  options:
+    a: TestRail
+    b: Jira
+    c: Grafana
+    d: GitHub
+  answer: b
+  explanation: Jira имеет встроенные Scrum- и Kanban-доски.
+  tags: ["tools", "planning"]
+
+- id: q248
+  text: Какой инструмент применяют для генерации нагрузочного трафика с распределением по географии?
+  type: single
+  options:
+    a: Selenium
+    b: Postman
+    c: Locust
+    d: Jenkins
+  answer: c
+  explanation: Locust позволяет моделировать нагрузку и масштабировать её по регионам.
+  tags: ["tools", "performance"]
+
+- id: q249
+  text: Какой инструмент используют для анализа тестового покрытия кода на Python?
+  type: single
+  options:
+    a: Jira
+    b: Grafana
+    c: JUnit
+    d: Coverage.py
+  answer: d
+  explanation: Coverage.py измеряет, какие строки кода покрыты тестами.
+  tags: ["tools", "metrics"]
+
+- id: q250
+  text: Какой инструмент применяют для автоматизированной проверки веб-интерфейсов на JavaScript?
+  type: single
+  options:
+    a: Cypress
+    b: Selenium
+    c: JUnit
+    d: TestRail
+  answer: a
+  explanation: Cypress — современный инструмент для end-to-end тестов веб-интерфейсов.
+  tags: ["tools", "automation"]
