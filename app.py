@@ -30,7 +30,7 @@ def build_levels_kb():
 def build_post_results_kb(channel_url: str):
     kb = InlineKeyboardBuilder()
     kb.button(text="🧪 Квиз", callback_data="menu:quiz")
-    kb.button(text="🧠 QA Mind", url=channel_url)  # внешняя ссылка
+    kb.button(text="🧠 Прокачать знания с QA Mind", url=channel_url)  # внешняя ссылка
     kb.adjust(2)
     return kb.as_markup()
 
