@@ -49,6 +49,24 @@ def pick_random_pack(levels: list[str]) -> str | None:
     candidates = [code for code, data in packs.items() if data["pack"].get("level") in levels]
     return random.choice(candidates) if candidates else None
 
+# --- ПУНКТ 1: смешанный пакет из junior + advanced ---
+def build_mixed_pack(levels=("junior", "advanced")) -> dict:
+    """Собрать единый 'смешанный' пакет из указанных уровней."""
+    mixed_questions = []
+    for _, data in packs.items():
+        if data.get("pack", {}).get("level") in levels:
+            mixed_questions.extend(data.get("questions", []))
+    random.shuffle(mixed_questions)
+    return {
+        "pack": {
+            "code": "mixed",
+            "title": "Смешанный",
+            "level": "mixed",
+            "description": "Вопросы вперемешку из junior и advanced",
+        },
+        "questions": mixed_questions,
+    }
+
 
 async def main():
     bot = Bot(
@@ -88,13 +106,18 @@ async def main():
 
         # Определяем код пакета по выбранному уровню
         if level == "random":
-            code = random.choice(list(packs.keys())) if packs else None
+            # 1) собираем свежий смешанный пакет
+            packs["mixed"] = build_mixed_pack(("junior", "advanced"))
+            # 2) на всякий случай обновим ссылку в движке
+            engine.packs = packs
+            # 3) передаём КОД пакета, а не dict
+            code = "mixed"
         elif level == "junior":
             code = pick_random_pack(["junior"])
         elif level == "advanced":
             code = pick_random_pack(["advanced"])
         else:
-            code = None  # на всякий случай
+            code = None
 
         if not code:
             await c.message.answer("Для выбранного уровня пока нет вопросов 🙃 Попробуй снова: /start")
