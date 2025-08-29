@@ -88,26 +88,30 @@ def build_multi_kb(q: dict, selected: Set[str] | None):
     return kb.as_markup()
 
 async def send_question(chat_id: int, user_id: int, message_to_edit: Message | None = None):
-    """Отправляет (или редактирует) текущий вопрос с подходящей клавиатурой."""
+    """Отправляет (или редактирует) текущий вопрос с подходящей клавиатурой и прогрессом."""
     q = engine.get_current(user_id)
-    text = engine.render_question(q)
 
-    # подберём нужную клавиатуру
+    # прогресс: текущий индекс (0-based) + 1 / всего вопросов
+    s = engine.sessions[user_id]
+    curr = s["idx"] + 1
+    total = len(s["questions"])
+
+    text = f"*Вопрос {curr}/{total}*\n" + engine.render_question(q)
+
+    # клавиатура
     if q["type"] == "single":
         markup = build_single_kb(q)
     elif q["type"] == "multi":
-        # инициализируем буфер выбора, если нужно
         MULTI_BUF.setdefault(user_id, set())
         markup = build_multi_kb(q, MULTI_BUF[user_id])
     else:
-        markup = None  # free — пользователь напишет текстом
+        markup = None  # free
 
     if message_to_edit:
         try:
             await message_to_edit.edit_text(text, reply_markup=markup)
             return
         except Exception:
-            # если не получилось отредактировать — отправим новое
             pass
     await bot.send_message(chat_id, text, reply_markup=markup)
 
@@ -130,21 +134,21 @@ async def handle_result(m: Message, user_id: int, res: dict):
     else:
         await send_question(m.chat.id, user_id)
 
-def render_answered_question(q: dict, user_answers: list[str]) -> str:
-    """Форматируем вопрос после ответа: показываем правильный/неправильный выбор."""
+def render_answered_question(q: dict, user_answers: list[str], curr: int, total: int) -> str:
+    """Форматируем отредактированное сообщение с прогрессом и пометками вариантов."""
     correct = set(a.lower() for a in (q["answer"] if isinstance(q["answer"], list) else [q["answer"]]))
     user = set(a.lower() for a in user_answers)
 
-    lines = [f"🔎 *Q:* {q['text']}\n"]
+    lines = [f"*Вопрос {curr}/{total}*", f"🔎 *Q:* {q['text']}\n"]
     for letter, text in q["options"].items():
         if letter in correct and letter in user:
-            mark = "✅"   # выбрал и это правильный
+            mark = "✅"
         elif letter in correct:
-            mark = "✅"   # правильный, но не выбран
+            mark = "✅"
         elif letter in user:
-            mark = "❌"   # выбран, но неправильный
+            mark = "❌"
         else:
-            mark = "▫️"   # остальные
+            mark = "▫️"
         lines.append(f"{mark} {letter.upper()}) {text}")
     return "\n".join(lines)
 
@@ -237,15 +241,20 @@ async def main():
             return
 
         letter = c.data.split(":", 1)[1]
+        # Берём вопрос и прогресс ДО инкремента
         q = engine.get_current(c.from_user.id)
+        s = engine.sessions[c.from_user.id]
+        curr = s["idx"] + 1
+        total = len(s["questions"])
+
         res = engine.check(c.from_user.id, letter)
 
-        # редактируем сообщение: показываем правильный/неправильный
         try:
-            await c.message.edit_text(render_answered_question(q, [letter]))
+            await c.message.edit_text(render_answered_question(q, [letter], curr, total))
         except Exception:
             pass
 
+        MULTI_BUF.pop(c.from_user.id, None)
         await handle_result(c.message, c.from_user.id, res)
         await c.answer("Ответ принят")
 
@@ -283,11 +292,14 @@ async def main():
 
         sel = sorted(MULTI_BUF.get(c.from_user.id, set()))
         q = engine.get_current(c.from_user.id)
+        s = engine.sessions[c.from_user.id]
+        curr = s["idx"] + 1
+        total = len(s["questions"])
+
         res = engine.check(c.from_user.id, ",".join(sel))
 
-        # редактируем сообщение с вопросом
         try:
-            await c.message.edit_text(render_answered_question(q, sel))
+            await c.message.edit_text(render_answered_question(q, sel, curr, total))
         except Exception:
             pass
 
