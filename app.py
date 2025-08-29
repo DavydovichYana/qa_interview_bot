@@ -20,6 +20,15 @@ engine = QuizEngine(packs)
 # Буфер для мультивыбора: user_id -> set букв ('a','b',...)
 MULTI_BUF: Dict[int, Set[str]] = {}
 
+def progress_bar(curr: int, total: int, width: int = 10) -> str:
+    """Строка прогресса: ▰▰▰▱▱▱▱▱▱▱ (3/10)"""
+    if total <= 0:
+        return ""
+    filled = round(width * curr / total)
+    filled = max(0, min(width, filled))
+    # return f"{'▰'*filled}{'▱'*(width-filled)} ({curr}/{total})"
+    return f"{'▰' * filled}{'▱' * (width - filled)}"
+
 def is_admin(user_id: int) -> bool:
     try:
         return int(user_id) in set(int(x) for x in ADMIN_IDS)
@@ -88,15 +97,13 @@ def build_multi_kb(q: dict, selected: Set[str] | None):
     return kb.as_markup()
 
 async def send_question(chat_id: int, user_id: int, message_to_edit: Message | None = None):
-    """Отправляет (или редактирует) текущий вопрос с подходящей клавиатурой и прогрессом."""
     q = engine.get_current(user_id)
-
-    # прогресс: текущий индекс (0-based) + 1 / всего вопросов
     s = engine.sessions[user_id]
     curr = s["idx"] + 1
     total = len(s["questions"])
 
-    text = f"*Вопрос {curr}/{total}*\n" + engine.render_question(q)
+    bar = progress_bar(curr, total)
+    text = f"*Вопрос {curr}/{total}*\n{bar}\n" + engine.render_question(q)
 
     # клавиатура
     if q["type"] == "single":
@@ -135,11 +142,10 @@ async def handle_result(m: Message, user_id: int, res: dict):
         await send_question(m.chat.id, user_id)
 
 def render_answered_question(q: dict, user_answers: list[str], curr: int, total: int) -> str:
-    """Форматируем отредактированное сообщение с прогрессом и пометками вариантов."""
     correct = set(a.lower() for a in (q["answer"] if isinstance(q["answer"], list) else [q["answer"]]))
     user = set(a.lower() for a in user_answers)
 
-    lines = [f"*Вопрос {curr}/{total}*", f"🔎 *Q:* {q['text']}\n"]
+    lines = [f"*Вопрос {curr}/{total}*", progress_bar(curr, total), f"🔎 *Q:* {q['text']}\n"]
     for letter, text in q["options"].items():
         if letter in correct and letter in user:
             mark = "✅"
@@ -240,7 +246,11 @@ async def main():
             await c.answer();
             return
 
+        # Сразу отключим клавиатуру у сообщения с вопросом
+        await _remove_keyboard_safe(c.message)
+
         letter = c.data.split(":", 1)[1]
+
         # Берём вопрос и прогресс ДО инкремента
         q = engine.get_current(c.from_user.id)
         s = engine.sessions[c.from_user.id]
@@ -289,6 +299,9 @@ async def main():
         if not engine.has_active(c.from_user.id):
             await c.answer();
             return
+
+        # Отключим клавиатуру перед обработкой
+        await _remove_keyboard_safe(c.message)
 
         sel = sorted(MULTI_BUF.get(c.from_user.id, set()))
         q = engine.get_current(c.from_user.id)
