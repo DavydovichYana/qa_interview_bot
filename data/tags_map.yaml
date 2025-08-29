@@ -39,6 +39,7 @@ end-to-end: "Сквозные E2E"
 bug-reporting: "Баг-репорты"
 bug-lifecycle: "Жизненный цикл бага"
 test-artifacts: "Тестовые артефакты"
+test-levels: "Уровни тестирования"
 
 logging: "Логирование"
 monitoring: "Мониторинг и наблюдаемость"
