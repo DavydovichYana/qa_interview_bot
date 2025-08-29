@@ -3,8 +3,6 @@ import asyncio
 import random
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, CallbackQuery
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.enums.parse_mode import ParseMode
 from aiogram.client.default import DefaultBotProperties
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from settings import TELEGRAM_TOKEN, CHANNEL_URL
@@ -17,6 +15,17 @@ from quiz_engine import QuizEngine
 packs = load_packs("data/packs")
 engine = QuizEngine(packs)
 
+from aiogram import F
+from aiogram.types import Message
+from aiogram.enums.parse_mode import ParseMode
+from settings import ADMIN_IDS, ENV
+
+def is_admin(user_id: int) -> bool:
+    try:
+        print('это админ')
+        return int(user_id) in set(int(x) for x in ADMIN_IDS)
+    except Exception:
+        return False
 
 def build_levels_kb():
     """Клавиатура выбора уровня."""
@@ -30,7 +39,7 @@ def build_levels_kb():
 def build_post_results_kb(channel_url: str):
     kb = InlineKeyboardBuilder()
     kb.button(text="🧪 Квиз", callback_data="menu:quiz")
-    kb.button(text="🧠 Прокачать знания с QA Mind", url=channel_url)  # внешняя ссылка
+    kb.button(text="🧠 Прокачать знания\n с QA Mind", url=channel_url)  # внешняя ссылка
     kb.adjust(2)
     return kb.as_markup()
 
@@ -63,6 +72,14 @@ async def main():
             await m.answer("Технические неполадки 🤖 \n Выбери другой уровень.")
             return
         await m.answer("Коллега, привет!👋\n\n🧑‍💻 Давай проверим твои знания для себеседования на QA?\n🎓 Тебе предстоит ответить на 10 вопросов. \n📊 Выбери уровень сложности:", reply_markup=build_levels_kb())
+
+    # /version — узнаем среду: прод или stage
+    @dp.message(F.text == "/version")
+    async def version(m: Message):
+        if is_admin(m.from_user.id):
+            await m.answer(f"🤖 Окружение: *{ENV}* (админ-режим)", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await m.answer("Бот работает ✅")
 
     # Выбор уровня: сразу запускаем раунд
     @dp.callback_query(F.data.startswith("level:"))
