@@ -3126,7 +3126,7 @@ questions:
     b: Slack
     c: Jenkins
     d: TestRail
-  answer: a
+  answer: b
   explanation: Slack — мессенджер, часто интегрируется с Jira, Jenkins и другими сервисами.
   tags: ["tools", "communication"]
 

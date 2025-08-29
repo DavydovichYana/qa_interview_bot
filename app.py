@@ -130,6 +130,24 @@ async def handle_result(m: Message, user_id: int, res: dict):
     else:
         await send_question(m.chat.id, user_id)
 
+def render_answered_question(q: dict, user_answers: list[str]) -> str:
+    """Форматируем вопрос после ответа: показываем правильный/неправильный выбор."""
+    correct = set(a.lower() for a in (q["answer"] if isinstance(q["answer"], list) else [q["answer"]]))
+    user = set(a.lower() for a in user_answers)
+
+    lines = [f"🔎 *Q:* {q['text']}\n"]
+    for letter, text in q["options"].items():
+        if letter in correct and letter in user:
+            mark = "✅"   # выбрал и это правильный
+        elif letter in correct:
+            mark = "✅"   # правильный, но не выбран
+        elif letter in user:
+            mark = "❌"   # выбран, но неправильный
+        else:
+            mark = "▫️"   # остальные
+        lines.append(f"{mark} {letter.upper()}) {text}")
+    return "\n".join(lines)
+
 # === aiogram runtime ===
 bot = Bot(
     token=TELEGRAM_TOKEN,
@@ -218,12 +236,16 @@ async def main():
             await c.answer();
             return
 
-        # отключаем старые кнопки на сообщении с вопросом
-        await _remove_keyboard_safe(c.message)
-
         letter = c.data.split(":", 1)[1]
+        q = engine.get_current(c.from_user.id)
         res = engine.check(c.from_user.id, letter)
-        MULTI_BUF.pop(c.from_user.id, None)
+
+        # редактируем сообщение: показываем правильный/неправильный
+        try:
+            await c.message.edit_text(render_answered_question(q, [letter]))
+        except Exception:
+            pass
+
         await handle_result(c.message, c.from_user.id, res)
         await c.answer("Ответ принят")
 
@@ -259,12 +281,16 @@ async def main():
             await c.answer();
             return
 
-        # отключаем кнопки выбора перед обработкой
-        await _remove_keyboard_safe(c.message)
-
         sel = sorted(MULTI_BUF.get(c.from_user.id, set()))
-        answer_text = ",".join(sel)
-        res = engine.check(c.from_user.id, answer_text)
+        q = engine.get_current(c.from_user.id)
+        res = engine.check(c.from_user.id, ",".join(sel))
+
+        # редактируем сообщение с вопросом
+        try:
+            await c.message.edit_text(render_answered_question(q, sel))
+        except Exception:
+            pass
+
         MULTI_BUF.pop(c.from_user.id, None)
         await handle_result(c.message, c.from_user.id, res)
         await c.answer("Ответ отправлен")
