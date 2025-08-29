@@ -3018,7 +3018,7 @@ questions:
     b: Jenkins
     c: Postman
     d: Jira
-  answer: d
+  answer: b
   explanation: Jenkins — один из наиболее популярных CI/CD серверов.
   tags: ["tools", "ci-cd"]
 

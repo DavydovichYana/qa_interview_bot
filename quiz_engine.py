@@ -63,7 +63,7 @@ class QuizEngine:
         if t in ("single", "multi"):
             # жирные буквы a/b/c/d
             opts = "\n".join([f"**{k})** {v}" for k, v in q["options"].items()])
-            hint = "_Один вариант_" if t == "single" else "_Несколько вариантов (через запятую)_"
+            hint = "_Один вариант_" if t == "single" else "_Выбери один или несколько вариантов_"
             return f"{header}\n\n{opts}\n\n{hint}"
         return f"{header}\n\n_Свободный ответ_"
 
